@@ -1,0 +1,98 @@
+.link {
+    display: flex;
+    justify-content: space-between;
+}
+
+table {
+    border: 1px solid #ccc !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 90% !important;
+}
+
+table tr {
+    background-color: #f8f8f8 !important;
+    border: 1px solid #ddd !important;
+    padding: 0.35em !important;
+}
+
+table th,
+table td {
+    padding: 0.625em !important;
+    text-align: center !important;
+}
+
+table th {
+    font-size: 0.85em !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0 !important;
+    }
+
+    table thead {
+        border: none !important;
+        clip: rect(0 0 0 0) !important;
+        height: 1px !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        position: absolute !important;
+        width: 1px !important;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd !important;
+        display: block !important;
+        margin-bottom: 0.625em !important;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd !important;
+        display: block !important;
+        font-size: 0.8em !important;
+        text-align: right !important;
+    }
+
+    table td::before {
+        /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+        content: attr(data-label) !important;
+        float: left !important;
+        font-weight: bold !important;
+        text-transform: uppercase !important;
+    }
+
+    table td:last-child {
+        border-bottom: 0 !important;
+    }
+}
+
+.box {
+}
+
+.box select {
+    background-color: #f0f0f0be !important;
+    color: rgb(0, 0, 0) !important;
+    padding: 8px !important;
+    margin: 15px;
+    width: 200px !important;
+    border: none !important;
+    font-size: 15px !important;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2) !important;
+    -webkit-appearance: button !important;
+    appearance: button !important;
+    outline: none !important;
+    border-radius: 5px !important;
+}
+
+.box select option {
+    border-radius: 5px !important;
+    padding: 30px !important;
+}
