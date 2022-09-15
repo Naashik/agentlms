@@ -4,6 +4,7 @@ use App\Http\Controllers\AgentController;
 use Illuminate\Support\Facades\Route;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
- Route::get('/agentlogin', function (){
+
+
+Route::get('/agentlogin', function (){
      return view("agentlogin");
-     });
+});
+
+
+
 Route::get('/email',[AgentController::class,'email'])->name('email');
+
+Route::get('/agentdashboard',[AgentController::class,'agentdashboard'])->name('agentdashboard');
 
 Route::post('recaptcha',[AgentController::class,'recaptcha'])->name('recaptcha');
 Route::post('login-user',[AgentController::class,'loginUser'])->name('login-user');
-Route::post('email/verification',[CustomAuthController::class,'emailUser'])->name('email/verification');
+Route::post('email/verification',[AgentController::class,'emailUser'])->name('email/verification');
+Route::post('/logout',[AgentController::class,'logout'])->name('logout');

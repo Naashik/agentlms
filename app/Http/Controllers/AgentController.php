@@ -7,12 +7,17 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\OtpMail;
 use App\Models\User;
 use Hash;
+use Session;
 
 class AgentController extends Controller
 {
 
     public function email () {
         return view('email');
+    }
+
+    public function agentdashboard() {
+        return view('agent.agentdashboard');
     }
     public function loginUser(Request $request){
 
@@ -31,7 +36,9 @@ class AgentController extends Controller
                 $user->verification_code = $pin;
                 $user->save();
 
-               $res = Mail::to($user->email)->send(new OtpMail($pin));
+              Mail::to($user->email)->send(new OtpMail($pin));
+
+               return redirect('email');
 
             }
 
@@ -77,10 +84,10 @@ public function emailUser(Request $request)
             $user->verified = true;
             $user->update();
             if($user->admin == 1) {
-                return redirect('agentdashboard');
+                // return redirect('agentdashboard');
             }
             else {
-                return redirect('dashboard');
+                return redirect('agentdashboard');
             }
             
         }
@@ -94,5 +101,21 @@ public function emailUser(Request $request)
     }
        
        
+}
+
+public function logout(){
+
+    $userId = Session::get('loginId');;
+
+    $user = User::where('id','=', $userId)->first();
+
+    if(Session::has('loginId')){
+        $user->verified = false;
+        $user->update();
+        Session::pull('loginId');
+        Session::forget('loginId');
+
+        return redirect('agentlogin');
+    }
 }
 }
