@@ -6,10 +6,7 @@
 <div class="d-grid">
 
 <h2 style="font-size:20px">Lead Profile</h2>
-<div>
-<lable style="font-size:13px;font-weight:bold">Update Status :</label><button type="submit"
- class="btn btn-primary ">Work In Progress</button>
-</div>
+
  
 </div>
 <div ><img src="../media/logos/icons8-male-user-100.png"></div>
