@@ -25,6 +25,19 @@ class AgentController extends Controller
         return view('agentlogin');
     }
 
+    public function leadview() {
+
+        $agentid = Session::get('loginId');
+        $leads = Lead::where('agentid','=', $agentid)->get();
+        $agent = User::where('id','=', $agentid)->first();
+
+
+        return view('agent.leadview', [
+            'leads' => $leads,
+            'agent' => $agent,
+        ]);
+    }
+
     public function agentdashboard() {
 
         $agentid = Session::get('loginId');
