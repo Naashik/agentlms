@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OtpMail;
 use App\Models\User;
+use App\Models\Lead;
 use Hash;
 use Session;
 
@@ -16,9 +17,28 @@ class AgentController extends Controller
         return view('email');
     }
 
-    public function agentdashboard() {
-        return view('agent.agentdashboard');
+    public function index() {
+        return view('index');
     }
+
+    public function agentlogin() {
+        return view('agentlogin');
+    }
+
+    public function agentdashboard() {
+
+        $agentid = Session::get('loginId');
+        $leads = Lead::where('agentid','=', $agentid)->get();
+        $agent = User::where('id','=', $agentid)->first();
+
+
+        return view('agent.agentdashboard', [
+            'leads' => $leads,
+            'agent' => $agent,
+        ]);
+    }
+
+    
     public function loginUser(Request $request){
 
        

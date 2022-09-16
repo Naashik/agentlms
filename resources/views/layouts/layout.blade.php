@@ -40,6 +40,7 @@ License: For each use you must have a valid license purchased only from above li
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="../plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="../css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
 
     <!--end::Global Stylesheets Bundle-->
 </head>
@@ -177,8 +178,12 @@ License: For each use you must have a valid license purchased only from above li
                                     data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                                     data-kt-menu-placement="bottom-end">
                                     <div class="d-flex align-items-center">
-                                        <h3 style="color:white" class="mt-3">Agent Dashboard</h3><img
-                                            src="../media/logos/profile.png" alt="user" />
+                                        @if($agent)
+                                        <h3 style="color:white" class="mt-3">{{$agent->name}}</h3>
+                                        @else
+                                        <h3 style="color:white" class="mt-3">Login First</h3>
+                                        @endif
+                                        <img src="../media/logos/profile.png" alt="user" />
                                     </div>
                                 </div>
                                 <!--begin::User account menu-->
@@ -480,6 +485,7 @@ License: For each use you must have a valid license purchased only from above li
                 </div>
                 <!--end::sidebar-->
                 <!--begin::Main-->
+
                 @yield('content')
                 <!--end::Content-->
             </div>
