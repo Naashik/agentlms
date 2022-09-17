@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OtpMail;
 use App\Models\User;
+use App\Models\Status;
 use App\Models\Lead;
+use App\Models\Leaddetail;
+use App\Models\Countrydetail;
 use Hash;
 use Session;
+use DB;
 
 class AgentController extends Controller
 {
@@ -25,29 +29,61 @@ class AgentController extends Controller
         return view('agentlogin');
     }
 
-    public function leadview() {
+    public function leadview($id) {
 
         $agentid = Session::get('loginId');
-        $leads = Lead::where('agentid','=', $agentid)->get();
+        $lead = Lead::where('id','=', $id)->first();
+        $leaddetails = Leaddetail::where('leadid','=', $id)->first();
+        $countrydetails = Countrydetail::where('leadid','=', $id)->first();
         $agent = User::where('id','=', $agentid)->first();
+      
 
 
         return view('agent.leadview', [
-            'leads' => $leads,
+            'lead' => $lead,
             'agent' => $agent,
+            'leaddetails' => $leaddetails,
+            'countrydetails' => $countrydetails,
         ]);
+    }
+
+    public function updatelead($id){
+
+        $agentid = Session::get('loginId');
+        $agent = User::where('id','=', $agentid)->first();
+        $lead = Lead::where('id','=', $id)->first();
+
+        return view('agent.updatelead',[ 
+            'lead' => $lead,
+            'agent' => $agent
+        ]);
+    }
+
+    public function updatestatus($id){
+        $res = Status::where('leadid', $id)
+        ->update(['status' => 'Work in Progress']);
+
+        if($res) {
+            return back()->with('success',"Lead Status Changed");
+        }
+
+        else {
+            return back()->with('fail',"Something went wrong");
+        }
     }
 
     public function agentdashboard() {
 
         $agentid = Session::get('loginId');
         $leads = Lead::where('agentid','=', $agentid)->get();
+        $statuses = DB::table('statuses')->get();
         $agent = User::where('id','=', $agentid)->first();
 
 
         return view('agent.agentdashboard', [
             'leads' => $leads,
             'agent' => $agent,
+            'statuses' => $statuses,
         ]);
     }
 

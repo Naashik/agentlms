@@ -23,7 +23,13 @@ Route::get('/',[AgentController::class,'index'])->name('index')->middleware('alr
 Route::get('/email',[AgentController::class,'email'])->name('email');
 
 Route::get('/agentdashboard',[AgentController::class,'agentdashboard'])->name('agentdashboard')->middleware('isLoggedIn');
-Route::get('/leadview',[AgentController::class,'leadview'])->name('leadview')->middleware('isLoggedIn');
+
+Route::get('/leadview/{id}',[AgentController::class,'leadview'])->name('leadview')->middleware('isLoggedIn');
+
+Route::get('/updatelead/{id}',[AgentController::class,'updatelead'])->name('updatelead')->middleware('isLoggedIn');
+
+Route::post('/updatelead/{id}',[AgentController::class,'updatestatus'])->name('updatestatus');
+
 
 
 Route::post('recaptcha',[AgentController::class,'recaptcha'])->name('recaptcha');
