@@ -13,7 +13,7 @@
         @endif
         @csrf
 
-        <div class="mb-10">
+        <div class="mt-10 mb-5 ">
 
             <h2 style="font-size:20px">Lead Update </h2>
 
