@@ -7,10 +7,11 @@
     <div class="d-flex flex-column align-items-center mb-8 mt-5 m-4">
         <label>Update Status To :</label>
         <form action="/updatelead/{{$lead->id}}" method="post">
-
+        @csrf
             <button type="submit" id="kt_sign_in_submit" class="btn btn-primary mt-2">
                 <!--begin::Indicator label-->
                 <span class="indicator-label">Work in progress</span>
+                
                 <!--end::Indicator label-->
                 <!--begin::Indicator progress-->
                 <span class="indicator-progress">Please wait...
@@ -25,7 +26,7 @@
 
     <form class="form w-100 px-5 " action="/updatedetails/{{$lead->id}}" method="post">
         @if(Session::has('success'))
-        <div class="alert alert-success">{{Session::get('ssuccess')}}</div>
+        <div class="alert alert-success">{{Session::get('success')}}</div>
         @endif
         @if(Session::has('fail'))
         <div class="alert alert-danger">{{Session::get('fail')}}</div>
