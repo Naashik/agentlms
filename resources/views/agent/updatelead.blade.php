@@ -54,7 +54,7 @@
 
         <div class="fv-row mb-8">
             <!--begin::User-->
-            <input type="text" placeholder="Transaction" name="transaction" autocomplete="off"
+            <input type="text" placeholder="Transaction Details" name="transaction" autocomplete="off"
                 class="form-control bg-transparent" value={{old('transaction')}}>
             <span class="text-danger">@error('transaction') {{$message}} @enderror</span>
             <!--end::User-->
