@@ -39,13 +39,11 @@
             <caption style="color:black;font-weight:bold">Lead Status Transaction</caption>
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                
                     <th scope="col">Lead ID</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Time stamp</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Note</th>
                     <th scope="col">Reminder date</th>
-                    <th scope="col">Reminder time</th>
 
 
                 </tr>
