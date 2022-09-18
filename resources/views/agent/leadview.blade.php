@@ -42,7 +42,7 @@
                 
                     <th scope="col">Lead ID</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Note</th>
+                    <th scope="col">Transaction Details</th>
                     <th scope="col">Reminder date</th>
 
 
