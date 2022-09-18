@@ -178,10 +178,10 @@ License: For each use you must have a valid license purchased only from above li
                                     data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                                     data-kt-menu-placement="bottom-end">
                                     <div class="d-flex align-items-center">
-                                        @if($agent)
+                                        @if(isset($agent))
                                         <h3 style="color:white" class="mt-3">{{$agent->name}}</h3>
                                         @else
-                                        <h3 style="color:white" class="mt-3">Login First</h3>
+                                        <h3 style="color:white" class="mt-3">Agent Dashboard</h3>
                                         @endif
                                         <img src="../media/logos/profile.png" alt="user" />
                                     </div>
@@ -295,6 +295,17 @@ License: For each use you must have a valid license purchased only from above li
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
                                                 <span class="menu-title">Home</span>
+                                            </a>
+                                            <!--end:Menu link-->
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <!--begin:Menu link-->
+                                            <a class="menu-link" href="/leadtransactionview">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">Lead Transactions</span>
                                             </a>
                                             <!--end:Menu link-->
                                         </div>

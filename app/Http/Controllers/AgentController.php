@@ -10,6 +10,7 @@ use App\Models\Status;
 use App\Models\Lead;
 use App\Models\Leaddetail;
 use App\Models\Countrydetail;
+use App\Models\Transactiondetail;
 use Hash;
 use Session;
 use DB;
@@ -29,6 +30,21 @@ class AgentController extends Controller
         return view('agentlogin');
     }
 
+    public function leadtransactionview() {
+        $agentid = Session::get('loginId');
+        $agent = User::where('id','=', $agentid)->first();
+
+        $leads = DB::table('leads')
+            ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+            ->get();
+
+            
+        return view('agent.leadtransactionview', [
+            'agent' => $agent,
+            'leads' => $leads,
+        ]);
+    }
+
     public function leadview($id) {
 
         $agentid = Session::get('loginId');
@@ -45,6 +61,24 @@ class AgentController extends Controller
             'leaddetails' => $leaddetails,
             'countrydetails' => $countrydetails,
         ]);
+    }
+
+    public function updatedetails(Request $request, $id) {
+
+        $val = Transactiondetail::where('leadid', $id)->first();
+
+        if($val){
+            Transactiondetail::where('leadid', $id)
+                ->update(['transaction' => $request->transaction, 'reminder' => $request->dob ]);
+        }
+        else {
+            $transactiondetail = new Transactiondetail; 
+            $transactiondetail->transaction = $request->transaction;
+            $transactiondetail->reminder = $request->dob;
+            $transactiondetail->leadid = $id;
+            
+            $transactiondetail->save();
+        }
     }
 
     public function updatelead($id){

@@ -26,9 +26,13 @@ Route::get('/agentdashboard',[AgentController::class,'agentdashboard'])->name('a
 
 Route::get('/leadview/{id}',[AgentController::class,'leadview'])->name('leadview')->middleware('isLoggedIn');
 
+Route::get('/leadtransactionview',[AgentController::class,'leadtransactionview'])->name('leadtransactionview')->middleware('isLoggedIn');
+
 Route::get('/updatelead/{id}',[AgentController::class,'updatelead'])->name('updatelead')->middleware('isLoggedIn');
 
 Route::post('/updatelead/{id}',[AgentController::class,'updatestatus'])->name('updatestatus');
+
+Route::post('/updatedetails/{id}',[AgentController::class,'updatedetails'])->name('updatedetails');
 
 
 
