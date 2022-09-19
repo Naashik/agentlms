@@ -11,27 +11,62 @@
         </div>
         <div><img src="../media/logos/icons8-male-user-100.png"></div>
 
-        <form class="mt-10" style="font-size:15px">
-            <label>Lead ID: {{$lead->id}}</label><br>
-            <label class="mt-1">Batch ID: {{$lead->batchid}}</label><br>
-            <label class="mt-1">Lead Name: {{$lead->name}}</label><br>
-            <label class="mt-1">Email: {{$lead->email}}</label><br>
-            <label class="mt-1">Phone: {{$lead->phonenumber}}</label><br>
-            <label class="mt-1">Phone 2: @if(isset($leaddetails->phonenumber2)) {{$leaddetails->phonenumber2}} @else
-                Null @endif</label><br>
-            <label class="mt-1">Country: @if(isset($countrydetails->countryname)) {{$countrydetails->countryname}} @else
-                Null @endif</label><br>
-            <label class="mt-1">State: @if(isset($countrydetails->state)) {{$countrydetails->state}} @else
-                Null @endif</label><br>
-            <label class="mt-1">City: @if(isset($countrydetails->city)) {{$countrydetails->city}} @else
-                Null @endif</label><br>
-            <label class="mt-1">Position: @if(isset($leaddetails->position)) {{$leaddetails->position}} @else
-                Null @endif</label><br>
-            <label class="mt-1">Lead Type: @if(isset($leaddetails->leadtype)) {{$leaddetails->leadtype}} @else
-                Null @endif</label><br>
+        <table class="table mt-10 w-25 caption-top " >
+             <thead>
+                <tr >
+                    <td style="font-weight:bold">Batch ID</td>
+                    <td>{{$lead->batchid}}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold">Lead Name</td>
+                    <td>{{$lead->name}}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold">Email</td>
+                    <td>{{$lead->email}}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold">Phone</td>
+                    <td>{{$lead->phonenumber}}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold">Phone 2</td>
+                    <td>@if(isset($leaddetails->phonenumber2)) {{$leaddetails->phonenumber2}} @else
+                Null @endif</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold">Country</td>
+                    <td>@if(isset($countrydetails->countryname)) {{$countrydetails->countryname}} @else
+                Null @endif</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold">State</td>
+                    <td>@if(isset($countrydetails->state)) {{$countrydetails->state}} @else
+                Null @endif</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold">City</td>
+                    <td> @if(isset($countrydetails->city)) {{$countrydetails->city}} @else
+                Null @endif</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold">Position</td>
+                    <td>@if(isset($leaddetails->position)) {{$leaddetails->position}} @else
+                Null @endif</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold">Lead Type</td>
+                    <td>@if(isset($leaddetails->leadtype)) {{$leaddetails->leadtype}} @else
+                Null @endif</td>
+                </tr>
 
+
+            </thead>
+    
+        </table>
 
         </form>
+       
     </div>
     <div class="d-flex">
 

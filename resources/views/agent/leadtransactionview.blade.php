@@ -15,20 +15,21 @@
 
     <thead>
         <tr>
-            <th scope="col">Lead Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Transaction</th>
-            <th scope="col">Reminder</th>
+            <th scope="col">Transaction details</th>
+            <th scope="col">Reminder date</th>
+            <th scope="col">Reminder time</th>
+
         </tr>
     </thead>
     @if(count($leads) > 0)
     <tbody>
         @foreach($leads as $lead)
         <tr>
-            <td>{{$lead->leadid}}</td>
             <td>{{$lead->name}}</td>
             <td>{{$lead->transaction}}</td>
             <td>{{$lead->reminder}}</td>
+            <td>{{$lead->time}}</td>
         </tr>
         @endforeach
     </tbody>
