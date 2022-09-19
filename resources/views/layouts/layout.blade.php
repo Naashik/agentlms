@@ -42,6 +42,8 @@ License: For each use you must have a valid license purchased only from above li
     <link href="../css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     <!--end::Global Stylesheets Bundle-->
 </head>
 <!--end::Head-->
@@ -191,10 +193,9 @@ License: For each use you must have a valid license purchased only from above li
                                     data-kt-menu="true">
 
                                     <div class="menu-item px-5">
-                                        <form action="logout" method="POST">
+                                        <form action="/logout" method="POST">
                                             @csrf
-                                            <button type="submit" href="logout"
-                                                class="menu-link px-5 mx-4 btn btn-light">Sign
+                                            <button type="submit" class="menu-link px-5 mx-4 btn btn-light">Sign
                                                 Out</button>
                                         </form>
                                     </div>
@@ -290,7 +291,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link active" href="agentdashboard">
+                                            <a class="menu-link active" href="/agentdashboard">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -299,16 +300,6 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end:Menu link-->
                                         </div>
 
-                                        <div class="menu-item">
-                                            <!--begin:Menu link-->
-                                            <a class="menu-link" href="/leadtransactionview">
-                                                <span class="menu-bullet">
-                                                    <span class="bullet bullet-dot"></span>
-                                                </span>
-                                                <span class="menu-title">Lead Transactions</span>
-                                            </a>
-                                            <!--end:Menu link-->
-                                        </div>
                                         <!--end:Menu item-->
                                         <!--begin:Menu item-->
 

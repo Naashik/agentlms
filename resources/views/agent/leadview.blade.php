@@ -39,20 +39,68 @@
             <caption style="color:black;font-weight:bold">Lead Status Transaction</caption>
             <thead>
                 <tr>
-                
+
                     <th scope="col">Lead ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Transaction Details</th>
                     <th scope="col">Reminder date</th>
+                    <th scope="col">Reminder time</th>
 
 
                 </tr>
+
+
             </thead>
+            @if(isset($leadtransaction))
+            <tbody>
+                @foreach($leadtransaction as $transaction)
+                <tr>
+                    <td>{{$transaction->leadid}}</td>
+                    <td>{{$transaction->name}}</td>
+                    <td>{{$transaction->transaction}}</td>
+                    <td>{{$transaction->reminder}}</td>
+                    <td>{{$transaction->time}}</td>
 
-
-
+                    <td>
+                        <form method="POST" action="/deletetransaction/{{$transaction->id}}">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="btn btn-sm btn-danger btn-flat py-1 show_confirm"
+                                data-toggle="tooltip" title='Delete'>Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+            @endif
         </table>
-        <table class="table mt-10 w-50 m-5 caption-top">
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        </script>
+        <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            event.preventDefault();
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            })
+
+
+        });
+        </script>
+        <!-- <table class="table mt-10 w-50 m-5 caption-top">
             <caption style="color:black;font-weight:bold">Lead Zoiper Transaction</caption>
             <thead>
                 <tr>
@@ -68,7 +116,7 @@
 
 
 
-        </table>
+        </table> -->
     </div>
 </div>
 

@@ -52,32 +52,50 @@ class AgentController extends Controller
         $leaddetails = Leaddetail::where('leadid','=', $id)->first();
         $countrydetails = Countrydetail::where('leadid','=', $id)->first();
         $agent = User::where('id','=', $agentid)->first();
+
+        $leadtransaction = DB::table('leads')
+        ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        ->where('leads.id', '=', $id)
+        ->get();
       
-
-
         return view('agent.leadview', [
             'lead' => $lead,
             'agent' => $agent,
             'leaddetails' => $leaddetails,
             'countrydetails' => $countrydetails,
+            'leadtransaction' => $leadtransaction,
         ]);
     }
 
-    public function updatedetails(Request $request, $id) {
+    public function deletetransaction($id){
 
-        $val = Transactiondetail::where('leadid', $id)->first();
-
-        if($val){
-            Transactiondetail::where('leadid', $id)
-                ->update(['transaction' => $request->transaction, 'reminder' => $request->dob ]);
+        $transaction = Transactiondetail::findOrFail($id);
+        $res = $transaction->delete();
+  
+        if($res) {
+            return back()->with('success','Transaction deleted successfully');
         }
         else {
+            return redirect('/admindashboard/viewleads')->with('fail','Something went wrong. Please try again');
+        }
+     }
+
+    public function updatedetails(Request $request, $id) {
+
             $transactiondetail = new Transactiondetail; 
             $transactiondetail->transaction = $request->transaction;
-            $transactiondetail->reminder = $request->dob;
+            $transactiondetail->reminder = $request->date;
+            $transactiondetail->time = $request->time;
             $transactiondetail->leadid = $id;
             
-            $transactiondetail->save();
+          $res = $transactiondetail->save();
+
+          if($res) {
+            return back()->with('success',"Lead transactions Added");
+        }
+
+        else {
+            return back()->with('fail',"Something went wrong");
         }
     }
 
@@ -180,18 +198,28 @@ public function emailUser(Request $request)
 
     $user = User::where('id','=', $userId)->first();
 
-    if($user){
+    $leads = Lead::where('agentid','=', $userId)->get();
+
+    $leadtransaction = DB::table('leads')
+        ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        ->get();
+
+     if($user){
         if($user->verification_code == $request->number){
 
             $user->verification_code = null;
             $user->verified = true;
             $user->update();
-            if($user->admin == 1) {
-                // return redirect('agentdashboard');
-            }
-            else {
-                return redirect('agentdashboard');
-            }
+                   
+                if(count($leadtransaction) > 0){     
+                    return redirect('leadtransactionview');       
+                    
+                }
+
+                else {
+                    return redirect('agentdashboard');
+                }
+
             
         }
         

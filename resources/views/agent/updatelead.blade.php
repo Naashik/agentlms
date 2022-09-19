@@ -7,11 +7,11 @@
     <div class="d-flex flex-column align-items-center mb-8 mt-5 m-4">
         <label>Update Status To :</label>
         <form action="/updatelead/{{$lead->id}}" method="post">
-        @csrf
+            @csrf
             <button type="submit" id="kt_sign_in_submit" class="btn btn-primary mt-2">
                 <!--begin::Indicator label-->
                 <span class="indicator-label">Work in progress</span>
-                
+
                 <!--end::Indicator label-->
                 <!--begin::Indicator progress-->
                 <span class="indicator-progress">Please wait...
@@ -62,7 +62,12 @@
 
         <div class="d-flex fv-row mb-8">
             <label class="me-6 form-control bg-transparent" for="">Reminder Date</label>
-            <input class="form-control bg-transparent" type="datetime-local" name="dob">
+            <input class="form-control bg-transparent" type="date" name="date">
+        </div>
+
+        <div class="d-flex fv-row mb-8">
+            <label class="me-6 form-control bg-transparent" for="">Reminder Time</label>
+            <input class="form-control bg-transparent" type="time" name="time">
         </div>
         <!--begin::Link-->
 

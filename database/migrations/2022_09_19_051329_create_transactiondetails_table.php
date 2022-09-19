@@ -16,7 +16,8 @@ class CreateTransactiondetailsTable extends Migration
         Schema::create('transactiondetails', function (Blueprint $table) {
             $table->id();
             $table->string('transaction')->nullable();
-            $table->dateTime('reminder')->nullable();
+            $table->date('reminder')->nullable();
+            $table->time('time')->nullable();
             $table->unsignedBigInteger('leadid')->nullable();
             $table->foreign('leadid')->references('id')->on('leads')->onDelete('cascade');
             $table->timestamps();
