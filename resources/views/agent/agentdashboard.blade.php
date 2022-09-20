@@ -1,5 +1,7 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
+@section('dashboard_select','active')
+
 <div>
     <div class="mt-10 m-5 ">
 
@@ -18,6 +20,8 @@
         <option value='All'>All</option>
         <option value='Assigned'>New</option>
         <option value='Work in progress'>Work in progress</option>
+        <option value='Closed'>Closed</option>
+    
     </select>
 </div>
 </label>
@@ -26,13 +30,13 @@
 
         <thead>
             <tr>
-                <th scope="col">Bacthid</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone number</th>
-                <th scope="col">Email</th>
-                <th scope="col">Status</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th id="th" scope="col">Bacthid</th>
+                <th id="th" scope="col">Name</th>
+                <th id="th" scope="col">Phone number</th>
+                <th id="th" scope="col">Email</th>
+                <th id="th" scope="col">Status</th>
+                <th id="th" scope="col" ></th>
+                <th id="th" scope="col"></th>
 
             </tr>
         </thead>
@@ -72,9 +76,9 @@
                         .name + ' </td> <td>' + value.phonenumber +
                         ' </td> <td>' + value.email + ' </td> <td>' + value
                         .status +
-                        ' </td> <td> <form id="form1" method="get" action="/updatelead/' +
+                        ' </td> <td style="text-align:center ;"> <form id="form1" method="get" action="/updatelead/' +
                         value.leadid +
-                        '"></form> <button type="submit" form="form1" class="btn btn-xs btn-secondary btn-flat">Update</button> </td> <td> <form id="form2" method="get" action="/leadview/' +
+                        '"></form> <button type="submit" form="form1" class="btn btn-xs btn-secondary btn-flat">Update</button> </td> <td style="text-align:center ;"> <form id="form2" method="get" action="/leadview/' +
                         value.leadid +
                         '"></form> <button type="submit" form="form2" class="btn btn-xs btn-primary btn-flat" title="View">View</button> </td>  </tr>'
                     $("table tbody").append(tr);

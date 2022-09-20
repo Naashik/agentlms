@@ -20,7 +20,7 @@ table tr {
 table th,
 table td {
     padding: 0.625em !important;
-    text-align: center !important;
+    text-align: left ;
 }
 
 table th {
@@ -95,5 +95,9 @@ table th {
 .box select option {
     border-radius: 5px !important;
     padding: 30px !important;
+}
+
+#th{
+    font-weight:bold;
 }
 

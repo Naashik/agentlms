@@ -226,7 +226,7 @@ License: For each use you must have a valid license purchased only from above li
                     <!--begin::Logo-->
                     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
                         <!--begin::Logo image-->
-                        <a href="/agentdashboard">
+                        <a href="/home">
                             <img alt="Logo" src="../media/logos/edgelogo.png" class="h-35px app-sidebar-logo-default" />
                             <img alt="Logo" src="../media/logos/edge.png" class="h-30px app-sidebar-logo-minimize" />
                         </a>
@@ -291,7 +291,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link active" href="/agentdashboard">
+                                            <a class="menu-link @yield('home_select')" href="/home">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -299,16 +299,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </a>
                                             <!--end:Menu link-->
                                         </div>
-                                        <div class="menu-item">
-                                            <!--begin:Menu link-->
-                                            <a class="menu-link " href="/leadtransactionview">
-                                                <span class="menu-bullet">
-                                                    <span class="bullet bullet-dot"></span>
-                                                </span>
-                                                <span class="menu-title">Transaction details</span>
-                                            </a>
-                                            <!--end:Menu link-->
-                                        </div>
+                                   
 
                                         <!--end:Menu item-->
                                         <!--begin:Menu item-->
@@ -320,7 +311,62 @@ License: For each use you must have a valid license purchased only from above li
 
                                     <!--end:Menu sub-->
                                 </div>
-                          
+                                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                                    <!--begin:Menu link-->
+                                    <span class="menu-link">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
+                                                        fill="currentColor" />
+                                                    <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
+                                                        fill="currentColor" />
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-title">Leads</span>
+                                        <span class="menu-arrow"></span>
+                                    </span>
+                                    <!--end:Menu link-->
+                                    <!--begin:Menu sub-->
+                                    <div class="menu-sub menu-sub-accordion">
+                                        <!--begin:Menu item-->
+                                        <div class="menu-item">
+                                            <!--begin:Menu link-->
+                                            <a class="menu-link @yield('dashboard_select')" href="/agentdashboard">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">Details</span>
+                                            </a>
+                                            <!--end:Menu link-->
+                                        </div>
+                                        <!--end:Menu item-->
+                                        <!--begin:Menu item-->
+                                        <div class="menu-item">
+                                            <!--begin:Menu link-->
+                                            <a class="menu-link @yield('transaction_select')" href="/leadtransactionview">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">Transactions</span>
+                                            </a>
+                                            <!--end:Menu link-->
+                                        </div>
+                                        <!--end:Menu item-->
+                                        <!--begin:Menu item-->
+                                      
+                                        <!--end:Menu item-->
+                                        <!--begin:Menu item-->
+                                      
+                                        <!--end:Menu item-->
+                                    </div>
+                                    <!--end:Menu sub-->
+                                </div>
                                 <!--end:Menu item-->
 
                                 <!--end:Menu item-->

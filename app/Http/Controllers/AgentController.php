@@ -26,7 +26,7 @@ class AgentController extends Controller
     public function index() {
         return view('index');
     }
-
+   
     public function agentlogin() {
         return view('agentlogin');
     }
@@ -175,6 +175,20 @@ class AgentController extends Controller
         ]);
     }
 
+    public function home() {
+
+        $agentid = Session::get('loginId');
+        $leads = Lead::where('agentid','=', $agentid)->get();
+        $agent = User::where('id','=', $agentid)->first();
+
+
+
+        return view('agent.home', [
+            'leads' => $leads,
+            'agent' => $agent,
+
+        ]);
+    }
     
     public function loginUser(Request $request){
 

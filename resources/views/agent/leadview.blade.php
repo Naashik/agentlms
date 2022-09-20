@@ -14,48 +14,48 @@
         <table class="table mt-10 w-25 caption-top " >
              <thead>
                 <tr >
-                    <td style="font-weight:bold">Batch ID</td>
+                    <th id="th">Batch ID</th>
                     <td>{{$lead->batchid}}</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold">Lead Name</td>
+                    <th id="th">Lead Name</th>
                     <td>{{$lead->name}}</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold">Email</td>
+                    <th id="th">Email</th>
                     <td>{{$lead->email}}</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold">Phone</td>
+                    <th id="th">Phone</th>
                     <td>{{$lead->phonenumber}}</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold">Phone 2</td>
+                    <th id="th">Phone 2</th>
                     <td>@if(isset($leaddetails->phonenumber2)) {{$leaddetails->phonenumber2}} @else
                 Null @endif</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold">Country</td>
+                    <th id="th">Country</th>
                     <td>@if(isset($countrydetails->countryname)) {{$countrydetails->countryname}} @else
                 Null @endif</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold">State</td>
+                    <th id="th">State</th>
                     <td>@if(isset($countrydetails->state)) {{$countrydetails->state}} @else
                 Null @endif</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold">City</td>
+                    <th id="th">City</th>
                     <td> @if(isset($countrydetails->city)) {{$countrydetails->city}} @else
                 Null @endif</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold">Position</td>
+                    <th id="th">Position</th>
                     <td>@if(isset($leaddetails->position)) {{$leaddetails->position}} @else
                 Null @endif</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold">Lead Type</td>
+                    <th id="th">Lead Type</th>
                     <td>@if(isset($leaddetails->leadtype)) {{$leaddetails->leadtype}} @else
                 Null @endif</td>
                 </tr>
@@ -71,15 +71,16 @@
     <div class="d-flex">
 
         <table class="table mt-10 w-50 m-5 caption-top">
-            <caption style="color:black;font-weight:bold">Lead Status Transaction</caption>
+            <caption style="color:black;font-weight:bold">Transaction Details</caption>
             <thead>
                 <tr>
 
                
-                    <th scope="col">Name</th>
-                    <th scope="col">Transaction Details</th>
-                    <th scope="col">Reminder date</th>
-                    <th scope="col">Reminder time</th>
+           
+                    <th id="th" scope="col">Transaction Details</th>
+                    <th id="th" scope="col">Reminder date</th>
+                    <th id="th" scope="col">Reminder time</th>
+                    <th id="th" scope="col">Created at</th>
 
 
                 </tr>
@@ -91,12 +92,13 @@
                 @foreach($leadtransaction as $transaction)
                 <tr>
         
-                    <td>{{$transaction->name}}</td>
+                    
                     <td>{{$transaction->transaction}}</td>
                     <td>{{$transaction->reminder}}</td>
                     <td>{{$transaction->time}}</td>
+                    <td>{{$transaction->created_at}}</td>
 
-                    <td>
+                    <td style="text-align:center ;">
                         <form method="POST" action="/deletetransaction/{{$transaction->id}}">
                             @csrf
                             <input name="_method" type="hidden" value="DELETE">

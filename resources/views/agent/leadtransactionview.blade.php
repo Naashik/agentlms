@@ -1,9 +1,9 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
-
+@section('transaction_select','active')
 <div class="mt-10 m-5 ">
 
-    <h2 style="font-size:20px">Lead Transaction Details</h2>
+    <h2 style="font-size:20px">Transaction Details</h2>
 
 
     <!--end::Title-->
@@ -15,10 +15,12 @@
 
     <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Transaction details</th>
-            <th scope="col">Reminder date</th>
-            <th scope="col">Reminder time</th>
+            <th id="th" scope="col">Name</th>
+            <th id="th" scope="col">Transaction details</th>
+            <th id="th" scope="col">Reminder date</th>
+            <th id="th" scope="col">Reminder time</th>
+            <th id="th" scope="col">Created at</th>
+        
 
         </tr>
     </thead>
@@ -30,6 +32,8 @@
             <td>{{$lead->transaction}}</td>
             <td>{{$lead->reminder}}</td>
             <td>{{$lead->time}}</td>
+            <td>{{$lead->created_at}}</td>
+           
         </tr>
         @endforeach
     </tbody>

@@ -24,6 +24,8 @@ Route::get('/email',[AgentController::class,'email'])->name('email');
 
 Route::get('/agentdashboard',[AgentController::class,'agentdashboard'])->name('agentdashboard')->middleware('isLoggedIn');
 
+Route::get('/home',[AgentController::class,'home'])->name('home')->middleware('isLoggedIn');
+
 Route::get('/leadview/{id}',[AgentController::class,'leadview'])->name('leadview')->middleware('isLoggedIn');
 
 Route::delete('/deletetransaction/{id}', [AgentController::class, 'deletetransaction'])->name('deletetransaction');
