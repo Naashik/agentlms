@@ -81,7 +81,7 @@ table th {
     background-color: #f0f0f0be !important;
     color: rgb(0, 0, 0) !important;
     padding: 8px !important;
-    margin: 15px;
+    margin: 5px;
     width: 200px !important;
     border: none !important;
     font-size: 15px !important;
@@ -96,3 +96,4 @@ table th {
     border-radius: 5px !important;
     padding: 30px !important;
 }
+

@@ -75,7 +75,7 @@
             <thead>
                 <tr>
 
-                    <th scope="col">Lead ID</th>
+               
                     <th scope="col">Name</th>
                     <th scope="col">Transaction Details</th>
                     <th scope="col">Reminder date</th>
@@ -90,7 +90,7 @@
             <tbody>
                 @foreach($leadtransaction as $transaction)
                 <tr>
-                    <td>{{$transaction->leadid}}</td>
+        
                     <td>{{$transaction->name}}</td>
                     <td>{{$transaction->transaction}}</td>
                     <td>{{$transaction->reminder}}</td>

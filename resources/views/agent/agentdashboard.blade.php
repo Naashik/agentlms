@@ -11,6 +11,17 @@
 
         <!--end::Subtitle=-->
     </div>
+    <label class="d-flex bg-transparent ">
+        <div class="box fw-bold ">
+                             
+    <select name="status" id="status" class="form-control m-5 box fw-bold" style="width:13rem">
+        <option value='All'>All</option>
+        <option value='Assigned'>New</option>
+        <option value='Work in progress'>Work in progress</option>
+    </select>
+</div>
+</label>
+
     <table class="table ms-5 mt-10 ">
 
         <thead>
@@ -32,11 +43,7 @@
 
     </table>
 
-    <select name="status" id="status" class="form-control w-25 m-4">
-        <option value='All'>All</option>
-        <option value='Assigned'>New</option>
-        <option value='Work in progress'>Work in progress</option>
-    </select>
+ 
 
 
 
@@ -69,7 +76,7 @@
                         value.leadid +
                         '"></form> <button type="submit" form="form1" class="btn btn-xs btn-secondary btn-flat">Update</button> </td> <td> <form id="form2" method="get" action="/leadview/' +
                         value.leadid +
-                        '"></form> <button type="submit" form="form2" class="btn btn-xs btn-secondary btn-flat" title="View">View</button> </td>  </tr>'
+                        '"></form> <button type="submit" form="form2" class="btn btn-xs btn-primary btn-flat" title="View">View</button> </td>  </tr>'
                     $("table tbody").append(tr);
 
 
@@ -110,7 +117,7 @@
                             value.leadid +
                             '"></form> <button type="submit" form="form1" class="btn btn-xs btn-secondary btn-flat">Update</button> </td> <td> <form id="form2" method="get" action="/leadview/' +
                             value.leadid +
-                            '"></form> <button type="submit" form="form2" class="btn btn-xs btn-secondary btn-flat" title="View">View</button> </td>  </tr>'
+                            '"></form> <button type="submit" form="form2" class="btn btn-xs btn-primary btn-flat" title="View">View</button> </td>  </tr>'
                         $("table tbody").append(tr);
 
                     });
