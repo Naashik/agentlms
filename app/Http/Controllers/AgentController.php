@@ -39,6 +39,7 @@ class AgentController extends Controller
         if($request->status == "All") {
             $data['leads'] = DB::table('leads')
             ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+            ->where('leads.agentid', '=', $agentid)
             ->get();
         }
 
@@ -46,6 +47,7 @@ class AgentController extends Controller
             $data['leads'] = DB::table('leads')
                 ->join('statuses', 'leads.id', '=', 'statuses.leadid')
                 ->orderBy('statuses.updated_at','desc')
+                ->where('leads.agentid', '=', $agentid)
                 ->where('statuses.status', '=', $request->status)
                 ->get();
         }
