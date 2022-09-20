@@ -12,8 +12,8 @@
 
         <!--end::Subtitle=-->
     </div>
-    <div class="d-flex flex-column align-items-center mb-8 mt-5 m-4">
-        <label>Update Status To :</label>
+    <div class="d-flex flex-column mb-8 mt-5 m-4">
+        <label class=" m-3">Update Status To :</label>
 
         <form action="/updatelead/{{$lead->id}}" method="post">
             @csrf
