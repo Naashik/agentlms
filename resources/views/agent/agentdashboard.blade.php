@@ -25,37 +25,100 @@
 
             </tr>
         </thead>
-        @if(count($leads) > 0)
+
         <tbody>
-            @foreach($leads as $lead)
-            <tr>
-                <td>{{$lead->batchid}}</td>
-                <td>{{$lead->name}}</td>
-                <td>{{$lead->phonenumber}}</td>
-                <td>{{$lead->email}}</td>
-                @foreach($statuses as $status)
-                @if($status->leadid == $lead->id)
-                <td>{{$status->status}}</td>
-                @endif
-                @endforeach
-                <td>
-                    <form method="GET" action="/updatelead/{{$lead->id}}">
-                        @csrf
 
-                        <button type="submit" class="btn btn-xs btn-secondary btn-flat">Update</button>
-                    </form>
-                </td>
-                <td>
-                    <form method="GET" action="/leadview/{{$lead->id}}">
-                        @csrf
-
-                        <button type="submit" class="btn-xs btn btn-primary btn-flat show_confirm" data-toggle="tooltip"
-                            title='View'>View</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
         </tbody>
-        @endif
+
     </table>
+
+    <select name="status" id="status" class="form-control w-25 m-4">
+        <option value='All'>All</option>
+        <option value='Assigned'>New</option>
+        <option value='Work in progress'>Work in progress</option>
+    </select>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+
+        var status = document.getElementById("status").value;
+
+        $("table tbody").html('');
+
+        $.ajax({
+            url: "{{url('api/fetch-leads')}}",
+            type: "POST",
+            data: {
+                status: status,
+                _token: '{{csrf_token()}}'
+            },
+            dataType: 'json',
+            success: function(result) {
+
+                $.each(result.leads, function(key, value) {
+
+                    var tr = '<tr> <td>' + value.batchid + ' </td> <td>' + value
+                        .name + ' </td> <td>' + value.phonenumber +
+                        ' </td> <td>' + value.email + ' </td> <td>' + value
+                        .status +
+                        ' </td> <td> <form id="form1" method="get" action="/updatelead/' +
+                        value.leadid +
+                        '"></form> <button type="submit" form="form1" class="btn btn-xs btn-secondary btn-flat">Update</button> </td> <td> <form id="form2" method="get" action="/leadview/' +
+                        value.leadid +
+                        '"></form> <button type="submit" form="form2" class="btn btn-xs btn-secondary btn-flat" title="View">View</button> </td>  </tr>'
+                    $("table tbody").append(tr);
+
+
+                });
+
+            }
+        });
+
+
+    })
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#status').on('change', function() {
+            var status = this.value;
+
+            $("table tbody").html('');
+
+            $.ajax({
+                url: "{{url('api/fetch-leads')}}",
+                type: "POST",
+                data: {
+                    status: status,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function(result) {
+
+                    $.each(result.leads, function(key, value) {
+
+
+                        var tr = '<tr> <td>' + value.batchid + ' </td> <td>' + value
+                            .name + ' </td> <td>' + value.phonenumber +
+                            ' </td> <td>' + value.email + ' </td> <td>' + value
+                            .status +
+                            ' </td> <td> <form id="form1" method="get" action="/updatelead/' +
+                            value.leadid +
+                            '"></form> <button type="submit" form="form1" class="btn btn-xs btn-secondary btn-flat">Update</button> </td> <td> <form id="form2" method="get" action="/leadview/' +
+                            value.leadid +
+                            '"></form> <button type="submit" form="form2" class="btn btn-xs btn-secondary btn-flat" title="View">View</button> </td>  </tr>'
+                        $("table tbody").append(tr);
+
+                    });
+
+                }
+            });
+        });
+    });
+    </script>
+
     @endsection

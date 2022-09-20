@@ -11,6 +11,7 @@ use App\Models\Lead;
 use App\Models\Leaddetail;
 use App\Models\Countrydetail;
 use App\Models\Transactiondetail;
+use App\Models\Statusvalue;
 use Hash;
 use Session;
 use DB;
@@ -28,6 +29,36 @@ class AgentController extends Controller
 
     public function agentlogin() {
         return view('agentlogin');
+    }
+
+    public function fetchleads(Request $request)
+    {
+
+        $agentid = Session::get('loginId');  
+        
+        if($request->status == "All") {
+            $data['leads'] = DB::table('leads')
+            ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+            ->get();
+        }
+
+        else if($request->status == "New") {
+            $data['leads'] = DB::table('leads')
+                ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+                ->orderBy('statuses.updated_at','desc')
+                ->where('statuses.status', '=', $request->status)
+                ->get();
+        }
+        else {
+            $data['leads'] = DB::table('leads')
+            ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+            ->where('leads.agentid', '=', $agentid)
+            ->where('statuses.status', '=', $request->status)
+            ->get();
+        }
+
+        return response()->json($data);
+
     }
 
     public function leadtransactionview() {
@@ -104,16 +135,18 @@ class AgentController extends Controller
         $agentid = Session::get('loginId');
         $agent = User::where('id','=', $agentid)->first();
         $lead = Lead::where('id','=', $id)->first();
+        $statuses = Statusvalue::all();
 
         return view('agent.updatelead',[ 
             'lead' => $lead,
-            'agent' => $agent
+            'agent' => $agent,
+            'statuses' => $statuses,
         ]);
     }
 
-    public function updatestatus($id){
+    public function updatestatus(Request $request, $id){
         $res = Status::where('leadid', $id)
-        ->update(['status' => 'Work in Progress']);
+        ->update(['status' => $request->status]);
 
         if($res) {
             return back()->with('success',"Lead Status Changed");
@@ -130,6 +163,7 @@ class AgentController extends Controller
         $leads = Lead::where('agentid','=', $agentid)->get();
         $statuses = DB::table('statuses')->get();
         $agent = User::where('id','=', $agentid)->first();
+
 
 
         return view('agent.agentdashboard', [

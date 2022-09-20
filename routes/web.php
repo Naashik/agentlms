@@ -45,3 +45,5 @@ Route::post('login-user',[AgentController::class,'loginUser'])->name('login-user
 Route::post('email/verification',[AgentController::class,'emailUser'])->name('email/verification');
 
 Route::post('logout',[AgentController::class,'logout'])->name('logout');
+
+Route::post('api/fetch-leads', [AgentController::class, 'fetchleads']);
