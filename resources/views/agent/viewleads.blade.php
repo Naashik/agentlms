@@ -15,27 +15,27 @@
     </div>
     <label class="d-flex bg-transparent ">
         <div class="box fw-bold ">
-                             
-    <select name="status" id="status" class="form-control m-5 box fw-bold" style="width:13rem">
-        <option value='All'>All</option>
-        <option value='Assigned'>New</option>
-        <option value='Work in progress'>Work in progress</option>
-        <option value='Closed'>Closed</option>
-    
-    </select>
-</div>
-</label>
+
+            <select name="status" id="status" class="form-control m-5 box fw-bold" style="width:13rem">
+                <option value='All'>All</option>
+                <option value='Assigned'>New</option>
+                <option value='Work in progress'>Work in progress</option>
+                <option value='Closed'>Closed</option>
+
+            </select>
+        </div>
+    </label>
 
     <table class="table ms-5 mt-10 ">
 
         <thead>
             <tr>
-                <th id="th" scope="col">Bacthid</th>
+
                 <th id="th" scope="col">Name</th>
                 <th id="th" scope="col">Phone number</th>
                 <th id="th" scope="col">Email</th>
                 <th id="th" scope="col">Status</th>
-                <th id="th" scope="col" ></th>
+                <th id="th" scope="col"></th>
                 <th id="th" scope="col"></th>
 
             </tr>
@@ -47,7 +47,7 @@
 
     </table>
 
- 
+
 
 
 
@@ -72,9 +72,10 @@
 
                 $.each(result.leads, function(key, value) {
 
-                    var tr = '<tr> <td>' + value.batchid + ' </td> <td>' + value
+                    var tr = '<tr> <td>' + value
                         .name + ' </td> <td>' + value.phonenumber +
-                        ' </td> <td>' + value.email + ' </td> <td>' + value
+                        ' </td> <td> <a href="mailto:' + value.email + '"> ' + value.email +
+                        ' <a/> </td> <td>' + value
                         .status +
                         ' </td> <td style="text-align:center ;"> <form id="form1" method="get" action="/updatelead/' +
                         value.leadid +
@@ -113,7 +114,7 @@
                     $.each(result.leads, function(key, value) {
 
 
-                        var tr = '<tr> <td>' + value.batchid + ' </td> <td>' + value
+                        var tr = '<tr> <td>' + value
                             .name + ' </td> <td>' + value.phonenumber +
                             ' </td> <td>' + value.email + ' </td> <td>' + value
                             .status +

@@ -299,7 +299,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </a>
                                             <!--end:Menu link-->
                                         </div>
-                                   
+
 
                                         <!--end:Menu item-->
                                         <!--begin:Menu item-->
@@ -337,7 +337,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link @yield('dashboard_select')" href="/agentdashboard">
+                                            <a class="menu-link @yield('dashboard_select')" href="/viewleads">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -349,7 +349,8 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link @yield('transaction_select')" href="/leadtransactionview">
+                                            <a class="menu-link @yield('transaction_select')"
+                                                href="/leadtransactionview">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -359,10 +360,10 @@ License: For each use you must have a valid license purchased only from above li
                                         </div>
                                         <!--end:Menu item-->
                                         <!--begin:Menu item-->
-                                      
+
                                         <!--end:Menu item-->
                                         <!--begin:Menu item-->
-                                      
+
                                         <!--end:Menu item-->
                                     </div>
                                     <!--end:Menu sub-->
@@ -374,7 +375,7 @@ License: For each use you must have a valid license purchased only from above li
 
                                 <!--end:Menu item-->
                                 <!--begin:Menu item-->
-                        
+
 
 
 

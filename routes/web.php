@@ -22,7 +22,7 @@ Route::get('/',[AgentController::class,'index'])->name('index')->middleware('alr
 
 Route::get('/email',[AgentController::class,'email'])->name('email');
 
-Route::get('/agentdashboard',[AgentController::class,'agentdashboard'])->name('agentdashboard')->middleware('isLoggedIn');
+Route::get('/viewleads',[AgentController::class,'viewleads'])->name('viewleads')->middleware('isLoggedIn');
 
 Route::get('/home',[AgentController::class,'home'])->name('home')->middleware('isLoggedIn');
 

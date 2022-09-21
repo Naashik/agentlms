@@ -159,7 +159,7 @@ class AgentController extends Controller
         }
     }
 
-    public function agentdashboard() {
+    public function viewleads() {
 
         $agentid = Session::get('loginId');
         $leads = Lead::where('agentid','=', $agentid)->get();
@@ -168,7 +168,7 @@ class AgentController extends Controller
 
 
 
-        return view('agent.agentdashboard', [
+        return view('agent.viewleads', [
             'leads' => $leads,
             'agent' => $agent,
             'statuses' => $statuses,
@@ -177,15 +177,19 @@ class AgentController extends Controller
 
     public function home() {
 
+        $agentid = Session::get('loginId');  
+        
         $agentid = Session::get('loginId');
         $leads = Lead::where('agentid','=', $agentid)->get();
+        $leadstatus = DB::table('leads')
+        ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        ->get();
         $agent = User::where('id','=', $agentid)->first();
-
-
 
         return view('agent.home', [
             'leads' => $leads,
             'agent' => $agent,
+            'leadstatus' => $leadstatus,
 
         ]);
     }

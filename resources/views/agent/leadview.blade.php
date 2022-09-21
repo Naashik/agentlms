@@ -11,9 +11,9 @@
         </div>
         <div><img src="../media/logos/icons8-male-user-100.png"></div>
 
-        <table class="table mt-10 w-25 caption-top " >
-             <thead>
-                <tr >
+        <table class="table mt-10 w-25 caption-top ">
+            <thead>
+                <tr>
                     <th id="th">Batch ID</th>
                     <td>{{$lead->batchid}}</td>
                 </tr>
@@ -32,41 +32,41 @@
                 <tr>
                     <th id="th">Phone 2</th>
                     <td>@if(isset($leaddetails->phonenumber2)) {{$leaddetails->phonenumber2}} @else
-                Null @endif</td>
+                        Null @endif</td>
                 </tr>
                 <tr>
                     <th id="th">Country</th>
                     <td>@if(isset($countrydetails->countryname)) {{$countrydetails->countryname}} @else
-                Null @endif</td>
+                        Null @endif</td>
                 </tr>
                 <tr>
                     <th id="th">State</th>
                     <td>@if(isset($countrydetails->state)) {{$countrydetails->state}} @else
-                Null @endif</td>
+                        Null @endif</td>
                 </tr>
                 <tr>
                     <th id="th">City</th>
                     <td> @if(isset($countrydetails->city)) {{$countrydetails->city}} @else
-                Null @endif</td>
+                        Null @endif</td>
                 </tr>
                 <tr>
                     <th id="th">Position</th>
                     <td>@if(isset($leaddetails->position)) {{$leaddetails->position}} @else
-                Null @endif</td>
+                        Null @endif</td>
                 </tr>
                 <tr>
                     <th id="th">Lead Type</th>
                     <td>@if(isset($leaddetails->leadtype)) {{$leaddetails->leadtype}} @else
-                Null @endif</td>
+                        Null @endif</td>
                 </tr>
 
 
             </thead>
-    
+
         </table>
 
         </form>
-       
+
     </div>
     <div class="d-flex">
 
@@ -74,9 +74,6 @@
             <caption style="color:black;font-weight:bold">Transaction Details</caption>
             <thead>
                 <tr>
-
-               
-           
                     <th id="th" scope="col">Transaction Details</th>
                     <th id="th" scope="col">Reminder date</th>
                     <th id="th" scope="col">Reminder time</th>
@@ -91,8 +88,7 @@
             <tbody>
                 @foreach($leadtransaction as $transaction)
                 <tr>
-        
-                    
+
                     <td>{{$transaction->transaction}}</td>
                     <td>{{$transaction->reminder}}</td>
                     <td>{{$transaction->time}}</td>
@@ -116,6 +112,7 @@
         </script>
         <script type="text/javascript">
         $('.show_confirm').click(function(event) {
+
             event.preventDefault();
             var form = $(this).closest("form");
             var name = $(this).data("name");

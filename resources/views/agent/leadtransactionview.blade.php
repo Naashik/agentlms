@@ -20,7 +20,8 @@
             <th id="th" scope="col">Reminder date</th>
             <th id="th" scope="col">Reminder time</th>
             <th id="th" scope="col">Created at</th>
-        
+            <th id="th" scope="col"></th>
+
 
         </tr>
     </thead>
@@ -33,7 +34,11 @@
             <td>{{$lead->reminder}}</td>
             <td>{{$lead->time}}</td>
             <td>{{$lead->created_at}}</td>
-           
+            <td>
+                <form method="get" action="/leadview/{{$lead->leadid}}">
+                    <button type=" submit" class="btn btn-xs btn-primary btn-flat" title="View">View</button>
+            </td>
+            </form>
         </tr>
         @endforeach
     </tbody>
