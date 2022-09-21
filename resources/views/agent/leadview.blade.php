@@ -90,8 +90,16 @@
                 <tr>
 
                     <td>{{$transaction->transaction}}</td>
+                    @if ($transaction->reminder)
                     <td>{{$transaction->reminder}}</td>
+                    @else
+                    <td>NULL</td>
+                    @endif
+                    @if ($transaction->time)
                     <td>{{$transaction->time}}</td>
+                    @else
+                    <td>NULL</td>
+                    @endif
                     <td>{{$transaction->created_at}}</td>
 
                     <td style="text-align:center ;">

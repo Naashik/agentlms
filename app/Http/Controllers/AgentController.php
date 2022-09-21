@@ -15,6 +15,7 @@ use App\Models\Statusvalue;
 use Hash;
 use Session;
 use DB;
+use Carbon\Carbon;
 
 class AgentController extends Controller
 {
@@ -63,14 +64,37 @@ class AgentController extends Controller
 
     }
 
+    public function fetchtransaction(Request $request) {
+        $from = $request->from;
+        $to = $request->to;
+
+        $agentid = Session::get('loginId'); 
+        
+        if($from && $to){
+            $data['leads'] = DB::table('leads')
+            ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+            ->where('leads.agentid', '=', $agentid)
+            ->whereBetween('current_date', [$from, $to])     
+            ->get();
+        }
+        else {
+            $data['leads'] = DB::table('leads')
+            ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+            ->where('leads.agentid', '=', $agentid)
+            ->get(); 
+        }
+        return response()->json($data);
+
+    }
+
     public function leadtransactionview() {
         $agentid = Session::get('loginId');
         $agent = User::where('id','=', $agentid)->first();
 
         $leads = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
-            ->get();
-
+            ->where('leads.agentid', '=', $agentid)
+            ->get();    
             
         return view('agent.leadtransactionview', [
             'agent' => $agent,
@@ -115,16 +139,26 @@ class AgentController extends Controller
 
     public function updatedetails(Request $request, $id) {
 
+        $date = Carbon::today()->toDateString();
+
+        $result = Status::where('leadid', $id)
+        ->update(['status' => $request->status]);
+
+        if($request->transaction){
             $transactiondetail = new Transactiondetail; 
             $transactiondetail->transaction = $request->transaction;
             $transactiondetail->reminder = $request->date;
             $transactiondetail->time = $request->time;
+            $transactiondetail->current_date = $date;
             $transactiondetail->leadid = $id;
             
           $res = $transactiondetail->save();
+        }
 
-          if($res) {
-            return back()->with('success',"Lead transactions Added");
+            
+
+          if(isset($res) || $result) {
+            return back()->with('success',"Lead details updated");
         }
 
         else {
@@ -147,16 +181,7 @@ class AgentController extends Controller
     }
 
     public function updatestatus(Request $request, $id){
-        $res = Status::where('leadid', $id)
-        ->update(['status' => $request->status]);
-
-        if($res) {
-            return back()->with('success',"Lead Status Changed");
-        }
-
-        else {
-            return back()->with('fail',"Something went wrong");
-        }
+        
     }
 
     public function viewleads() {

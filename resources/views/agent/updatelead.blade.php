@@ -12,37 +12,7 @@
 
         <!--end::Subtitle=-->
     </div>
-    <div class="d-flex flex-column mb-8 mt-5 m-4">
-        <label class=" m-3">Update Status To :</label>
 
-        <form action="/updatelead/{{$lead->id}}" method="post">
-            @csrf
-            <div class="d-flex" >
-            <div class="form-group">
-<label class="bg-transparent ">
-        <div class="box fw-bold ">
-                <select name="status" class="form-control">
-                    @foreach($statuses as $status)
-                    <option value='{{$status->status}}'>{{$status->status}}</option>
-                    @endforeach
-                </select>
-</div>
-</label>
-            </div>
-            <button type="submit" id="kt_sign_in_submit" class="btn btn-primary " style="margin-left:10px;">
-                <!--begin::Indicator label-->
-                <span class="indicator-label">-></span>
-
-                <!--end::Indicator label-->
-                <!--begin::Indicator progress-->
-                <span class="indicator-progress">Please wait...
-                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                <!--end::Indicator progress-->
-            </button>
-</div>
-        </form>
-
-    </div>
 
 
     <!--begin::Content container-->
@@ -85,6 +55,26 @@
         </div>
         <!--begin::Link-->
 
+        <div class="d-flex flex-column mb-8 mt-5 m-4">
+            <label class=" m-3">Update Status To :</label>
+
+
+            <div class="d-flex">
+                <div class="form-group">
+                    <label class="bg-transparent ">
+                        <div class="box fw-bold ">
+                            <select name="status" class="form-control">
+                                @foreach($statuses as $status)
+                                <option value='{{$status->status}}'>{{$status->status}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
         <!--end::Link-->
         <!--end::Wrapper-->
         <!--begin::Submit button-->
@@ -102,7 +92,7 @@
         <!--begin::Sign up-->
     </form>
 
-  
+
 
 </div>
 @endsection

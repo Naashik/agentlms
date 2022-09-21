@@ -18,6 +18,7 @@ class CreateTransactiondetailsTable extends Migration
             $table->string('transaction')->nullable();
             $table->date('reminder')->nullable();
             $table->time('time')->nullable();
+            $table->date('current_date')->nullable();
             $table->unsignedBigInteger('leadid')->nullable();
             $table->foreign('leadid')->references('id')->on('leads')->onDelete('cascade');
             $table->timestamps();
