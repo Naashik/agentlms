@@ -116,7 +116,8 @@
 
                         var tr = '<tr> <td>' + value
                             .name + ' </td> <td>' + value.phonenumber +
-                            ' </td> <td>' + value.email + ' </td> <td>' + value
+                            ' </td> <td> <a href="mailto:' + value.email + '">' +
+                            value.email + ' <a/> </td> <td>' + value
                             .status +
                             ' </td> <td> <form id="form1" method="get" action="/updatelead/' +
                             value.leadid +
