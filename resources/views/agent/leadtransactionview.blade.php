@@ -34,7 +34,7 @@
             <td>{{$lead->reminder}}</td>
             <td>{{$lead->time}}</td>
             <td>{{$lead->created_at}}</td>
-            <td>
+            <td style="text-align:center ;">
                 <form method="get" action="/leadview/{{$lead->leadid}}">
                     <button type=" submit" class="btn btn-xs btn-primary btn-flat" title="View">View</button>
             </td>
