@@ -74,7 +74,7 @@ class AgentController extends Controller
             $data['leads'] = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
             ->where('leads.agentid', '=', $agentid)
-            ->whereBetween('current_date', [$from, $to])     
+            ->whereBetween('reminder', [$from, $to])     
             ->get();
         }
         else {
@@ -149,7 +149,6 @@ class AgentController extends Controller
             $transactiondetail->transaction = $request->transaction;
             $transactiondetail->reminder = $request->date;
             $transactiondetail->time = $request->time;
-            $transactiondetail->current_date = $date;
             $transactiondetail->leadid = $id;
             
           $res = $transactiondetail->save();
