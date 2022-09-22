@@ -83,9 +83,9 @@
                         .status +
                         ' </td> <td class="d-flex justify-content-center"><img src="../media/logos/zoiper.png"> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
                         value.leadid +
-                        '"><img src="../media/logos/update.png"></a>  <a  href="/leadview/' +
+                        '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
                         value.leadid +
-                        '"><img src="../media/logos/group.png"></a>  </td>  </tr>';
+                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;margin-left:10px"></i> View</button></a>  </td>  </tr>';
                     $("table tbody").append(tr);
                 });
                 // $.each(result[1], function(key, value) {
@@ -116,12 +116,12 @@
                             ' </td> <td> <a href="mailto:' + value.email + '">' +
                             value.email + ' <a/> </td> <td>' + value
                             .status +
-                            ' </td> <td style="text-align:center ;"> <form method="get" action="/updatelead/' +
-                            value.leadid +
-                            '"><button type="submit" class="btn btn-xs btn-secondary btn-flat">Update</button></form>  </td> <td style="text-align:center ;"> <form method="get" action="/leadview/' +
-                            value.leadid +
-                            '"><button type="submit" class="btn btn-xs btn-primary btn-flat" title="View">View</button></form>  </td>  </tr>'
-                        $("table tbody").append(tr);
+                        ' </td> <td class="d-flex justify-content-center"><img src="../media/logos/zoiper.png"> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
+                        value.leadid +
+                        '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
+                        value.leadid +
+                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;margin-left:10px"></i> View</button></a>  </td>  </tr>';
+                    $("table tbody").append(tr);
                     });
                 }
             });
