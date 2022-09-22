@@ -1,6 +1,7 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
 @section('home_select','active')
+@section('drop_select','here show')
 
 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
     <!--begin::Content wrapper-->
@@ -47,7 +48,7 @@
                                     <div class="card-title d-flex flex-column align-items-center">
                                         <!--begin::Amount-->
 
-                                        <span class="text-white opacity-75 pt-1 fw-semibold fs-1 mb-5 ">Leads</span>
+                                        <span class="text-white opacity-75 pt-1 fw-semibold fs-1 mb-5 ">LEADS</span>
 
                                         <img src="../media/logos/users.png" class="mb-7 border-bottom border-3">
 
@@ -91,7 +92,7 @@
                                         <!--begin::Amount-->
 
                                         <span
-                                            class="text-white opacity-75 pt-1 fw-semibold fs-1 mb-5 ">Transactions</span>
+                                            class="text-white opacity-75 pt-1 fw-semibold fs-1 mb-5 ">REMINDERS</span>
 
                                         <img src="../media/logos/users.png" class="mb-7 border-bottom border-3">
 

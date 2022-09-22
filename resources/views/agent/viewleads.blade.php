@@ -26,7 +26,7 @@
         </div>
     </label>
 
-    <table class="table ms-5 mt-10 ">
+    <table class="table ms-5 mt-10">
 
         <thead>
             <tr>
@@ -35,9 +35,9 @@
                 <th id="th" scope="col">Phone number</th>
                 <th id="th" scope="col">Email</th>
                 <th id="th" scope="col">Status</th>
-                <th id="th" scope="col">Recent Transaction</th>
-                <th id="th" scope="col"></th>
-                <th id="th" scope="col"></th>
+            <!--    <th id="th" scope="col">Recent Transaction</th> -->
+                <th id="th" scope="col" class="w-25"></th>
+        
 
 
 
@@ -58,11 +58,8 @@
 
     <script>
     $(document).ready(function() {
-
         var status = document.getElementById("status").value;
-
         $("table tbody").html('');
-
         $.ajax({
             url: "{{url('api/fetch-leads')}}",
             type: "POST",
@@ -73,41 +70,29 @@
             dataType: 'json',
             success: function(result) {
                 var info;
-
                 // $.each(result[1], function(key, data) {
                 //     if (data.leadid == value.leadid) {
                 //         // var td += `<td>${data.transaction}</td`
-
-
                 //     }
                 // })
-
                 $.each(result[0].leads, function(key, value) {
-
                     var tr = '<tr> <td>' + value
                         .name + ' </td> <td>' + value.phonenumber +
                         ' </td> <td> <a href="mailto:' + value.email + '"> ' + value.email +
                         ' <a/> </td> <td>' + value
                         .status +
-                        ' </td> <td style="text-align:center;"> <form  method="get" action="/updatelead/' +
+                        ' </td> <td class="d-flex justify-content-center"><img src="../media/logos/zoiper.png"> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
                         value.leadid +
-                        '"><button type="submit"  class="btn btn-xs btn-secondary btn-flat">Update</button></form>  </td> <td style="text-align:center ;"> <form method="get" action="/leadview/' +
+                        '"><img src="../media/logos/update.png"></a>  <a  href="/leadview/' +
                         value.leadid +
-                        '"><button type="submit" class="btn btn-xs btn-primary btn-flat" title="View">View</button></form>  </td>  </tr>';
-
+                        '"><img src="../media/logos/group.png"></a>  </td>  </tr>';
                     $("table tbody").append(tr);
-
-
                 });
-
                 // $.each(result[1], function(key, value) {
                 //     console.log(value);
                 // })
-
             }
         });
-
-
     })
     </script>
 
@@ -115,9 +100,7 @@
     $(document).ready(function() {
         $('#status').on('change', function() {
             var status = this.value;
-
             $("table tbody").html('');
-
             $.ajax({
                 url: "{{url('api/fetch-leads')}}",
                 type: "POST",
@@ -127,10 +110,7 @@
                 },
                 dataType: 'json',
                 success: function(result) {
-
                     $.each(result.leads, function(key, value) {
-
-
                         var tr = '<tr> <td>' + value
                             .name + ' </td> <td>' + value.phonenumber +
                             ' </td> <td> <a href="mailto:' + value.email + '">' +
@@ -142,9 +122,7 @@
                             value.leadid +
                             '"><button type="submit" class="btn btn-xs btn-primary btn-flat" title="View">View</button></form>  </td>  </tr>'
                         $("table tbody").append(tr);
-
                     });
-
                 }
             });
         });

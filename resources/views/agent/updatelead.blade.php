@@ -4,7 +4,7 @@
 <div id="kt_app_content" class="app-content flex-column-fluid col-6 col-sm-6  col-md-3 col-lg-3 col-xl-3 col-xxl-3">
     <div class="mt-10 mb-5 px-5">
 
-        <h2 style="font-size:20px">Lead Update </h2>
+        <h2 style="font-size:20px">LEAD UPDATE</h2>
 
 
         <!--end::Title-->

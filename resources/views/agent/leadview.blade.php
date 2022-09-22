@@ -5,11 +5,11 @@
     <div class="mt-10 m-5 ">
         <div class="d-grid">
 
-            <h2 style="font-size:20px">Lead Profile</h2>
+            <h2 style="font-size:20px">LEAD PROFILE</h2>
 
 
         </div>
-        <div><img src="../media/logos/icons8-male-user-100.png"></div>
+
 
         <table class="table mt-10 w-25 caption-top ">
             <thead>
@@ -102,14 +102,14 @@
                     @endif
                     <td>{{$transaction->created_at}}</td>
 
-                    <td style="text-align:center ;">
+                <!--    <td style="text-align:center ;">
                         <form method="POST" action="/deletetransaction/{{$transaction->id}}">
                             @csrf
                             <input name="_method" type="hidden" value="DELETE">
                             <button type="submit" class="btn btn-sm btn-danger btn-flat py-1 show_confirm"
                                 data-toggle="tooltip" title='Delete'>Delete</button>
                         </form>
-                    </td>
+                    </td> -->
                 </tr>
                 @endforeach
             </tbody>

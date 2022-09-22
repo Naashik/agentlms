@@ -1,29 +1,30 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
 @section('transaction_select','active')
+@section('leaddrop_select','here show')
 <div class="mt-10 m-5 ">
 
-    <h2 style="font-size:20px">Transaction Details</h2>
+    <h2 style="font-size:20px" class="mb-5">REMINDER DETAILS</h2>
 
 
     <!--end::Title-->
     <!--begin::Subtitle-->
 
     <!--end::Subtitle=-->
-
-    <div class="d-flex fv-row mb-8 w-25">
-        <label class="me-6 form-control bg-transparent" for="">From</label>
+<div class="d-flex">
+    <div class="d-flex fv-row mb-8 w-25 " >
+        <label class="me-6 form-control bg-transparent" style="width:5rem;font-weight:bold" for="">From</label>
         <input class="form-control bg-transparent" type="date" id="from" name="from">
     </div>
 
     <div class="d-flex fv-row mb-8 w-25">
-        <label class="me-6 form-control bg-transparent" for="">To</label>
-        <input class="form-control bg-transparent" type="date" id="to" name="to">
+        <label class="me-6 form-control bg-transparent mx-5" style="width:5rem;font-weight:bold" for="">To</label>
+        <input class="form-control bg-transparent " type="date" id="to" name="to">
     </div>
-
+</div>
     <button type="submit" id="search" class="btn btn-primary">
         <!--begin::Indicator label-->
-        <span class="indicator-label">Search</span>
+        <span class="indicator-label">Filter</span>
         <!--end::Indicator label-->
         <!--begin::Indicator progress-->
         <!--end::Indicator progress-->

@@ -265,7 +265,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu"
                                 data-kt-menu="true" data-kt-menu-expand="false">
                                 <!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @yield('drop_select')">
                                     <!--begin:Menu link-->
                                     <span class="menu-link">
                                         <span class="menu-icon">
@@ -311,7 +311,7 @@ License: For each use you must have a valid license purchased only from above li
 
                                     <!--end:Menu sub-->
                                 </div>
-                                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                                <div data-kt-menu-trigger="click" class="menu-item  menu-accordion @yield('leaddrop_select')">
                                     <!--begin:Menu link-->
                                     <span class="menu-link">
                                         <span class="menu-icon">
@@ -354,7 +354,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">Transactions</span>
+                                                <span class="menu-title">Reminders</span>
                                             </a>
                                             <!--end:Menu link-->
                                         </div>
