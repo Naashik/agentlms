@@ -35,26 +35,6 @@
 
         <!--end::Separator-->
         <!--begin::Input group=-->
-
-        <div class="fv-row mb-8">
-            <!--begin::User-->
-            <input type="text" placeholder="Transaction Details" name="transaction" autocomplete="off"
-                class="form-control bg-transparent" value={{old('transaction')}}>
-            <span class="text-danger">@error('transaction') {{$message}} @enderror</span>
-            <!--end::User-->
-        </div>
-
-        <div class="d-flex fv-row mb-8">
-            <label class="me-6 form-control bg-transparent" for="">Reminder Date</label>
-            <input class="form-control bg-transparent" type="date" name="date">
-        </div>
-
-        <div class="d-flex fv-row mb-8">
-            <label class="me-6 form-control bg-transparent" for="">Reminder Time</label>
-            <input class="form-control bg-transparent" type="time" name="time">
-        </div>
-        <!--begin::Link-->
-
         <div class="d-flex flex-column mb-8 mt-5 m-4">
             <label class=" m-3">Update Status To :</label>
 
@@ -74,6 +54,25 @@
             </div>
 
         </div>
+
+        <div class="fv-row mb-8">
+            <!--begin::User-->
+            <input type="text" placeholder="Transaction Details" name="transaction" autocomplete="off"
+                class="form-control bg-transparent" value={{old('transaction')}}>
+            <span class="text-danger">@error('transaction') {{$message}} @enderror</span>
+            <!--end::User-->
+        </div>
+
+        <div class="d-flex fv-row mb-8">
+            <label class="me-6 form-control bg-transparent" for="">Reminder Date</label>
+            <input class="form-control bg-transparent" type="date" name="date">
+        </div>
+
+        <div class="d-flex fv-row mb-8">
+            <label class="me-6 form-control bg-transparent" for="">Reminder Time</label>
+            <input class="form-control bg-transparent" type="time" name="time">
+        </div>
+        <!--begin::Link-->
 
         <!--end::Link-->
         <!--end::Wrapper-->
