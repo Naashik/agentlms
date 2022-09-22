@@ -133,7 +133,7 @@ class AgentController extends Controller
             return back()->with('success','Transaction deleted successfully');
         }
         else {
-            return redirect('/admindashboard/viewleads')->with('fail','Something went wrong. Please try again');
+            return back()->with('fail','Something went wrong. Please try again');
         }
      }
 
@@ -180,9 +180,6 @@ class AgentController extends Controller
         ]);
     }
 
-    public function updatestatus(Request $request, $id){
-        
-    }
 
     public function viewleads() {
 
@@ -191,8 +188,12 @@ class AgentController extends Controller
         $statuses = DB::table('statuses')->get();
         $agent = User::where('id','=', $agentid)->first();
 
+        $data = DB::table('leads')
+        ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+        ->where('leads.agentid', '=', $agentid)
+        ->get();
 
-
+    
         return view('agent.viewleads', [
             'leads' => $leads,
             'agent' => $agent,
@@ -296,7 +297,7 @@ public function emailUser(Request $request)
                 }
 
                 else {
-                    return redirect('agentdashboard');
+                    return redirect('home');
                 }
 
             

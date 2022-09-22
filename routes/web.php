@@ -34,11 +34,7 @@ Route::get('/leadtransactionview',[AgentController::class,'leadtransactionview']
 
 Route::get('/updatelead/{id}',[AgentController::class,'updatelead'])->name('updatelead')->middleware('isLoggedIn');
 
-Route::post('/updatelead/{id}',[AgentController::class,'updatestatus'])->name('updatestatus');
-
 Route::post('/updatedetails/{id}',[AgentController::class,'updatedetails'])->name('updatedetails');
-
-
 
 Route::post('recaptcha',[AgentController::class,'recaptcha'])->name('recaptcha');
 

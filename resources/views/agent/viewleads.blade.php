@@ -77,11 +77,12 @@
                         ' </td> <td> <a href="mailto:' + value.email + '"> ' + value.email +
                         ' <a/> </td> <td>' + value
                         .status +
-                        ' </td> <td style="text-align:center ;"> <form id="form1" method="get" action="/updatelead/' +
+                        ' </td> <td style="text-align:center;"> <form  method="get" action="/updatelead/' +
                         value.leadid +
-                        '"></form> <button type="submit" form="form1" class="btn btn-xs btn-secondary btn-flat">Update</button> </td> <td style="text-align:center ;"> <form id="form2" method="get" action="/leadview/' +
+                        '"><button type="submit"  class="btn btn-xs btn-secondary btn-flat">Update</button></form>  </td> <td style="text-align:center ;"> <form method="get" action="/leadview/' +
                         value.leadid +
-                        '"></form> <button type="submit" form="form2" class="btn btn-xs btn-primary btn-flat" title="View">View</button> </td>  </tr>'
+                        '"><button type="submit" class="btn btn-xs btn-primary btn-flat" title="View">View</button></form>  </td>  </tr>';
+
                     $("table tbody").append(tr);
 
 
@@ -119,11 +120,11 @@
                             ' </td> <td> <a href="mailto:' + value.email + '">' +
                             value.email + ' <a/> </td> <td>' + value
                             .status +
-                            ' </td> <td style="text-align:center ;"> <form id="form1" method="get" action="/updatelead/' +
+                            ' </td> <td style="text-align:center ;"> <form method="get" action="/updatelead/' +
                             value.leadid +
-                            '"></form> <button type="submit" form="form1" class="btn btn-xs btn-secondary btn-flat">Update</button> </td> <td style="text-align:center ;"> <form id="form2" method="get" action="/leadview/' +
+                            '"><button type="submit" class="btn btn-xs btn-secondary btn-flat">Update</button></form>  </td> <td style="text-align:center ;"> <form method="get" action="/leadview/' +
                             value.leadid +
-                            '"></form> <button type="submit" form="form2" class="btn btn-xs btn-primary btn-flat" title="View">View</button> </td>  </tr>'
+                            '"><button type="submit" class="btn btn-xs btn-primary btn-flat" title="View">View</button></form>  </td>  </tr>'
                         $("table tbody").append(tr);
 
                     });
