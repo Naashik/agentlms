@@ -19,6 +19,7 @@ use Carbon\Carbon;
 
 class AgentController extends Controller
 {
+    
 
     public function email () {
         return view('email');
@@ -36,6 +37,18 @@ class AgentController extends Controller
     {
 
         $agentid = Session::get('loginId');  
+        $leads = Lead::where('agentid','=', $agentid)->get();
+
+        $transaction = array();
+
+        foreach($leads as $lead) {
+            $transactiondata = Transactiondetail::where('leadid','=', $lead->id)->first();
+            if($transactiondata != null){
+                array_push($transaction, $transactiondata);
+            }
+            
+            
+        }
         
         if($request->status == "All") {
             $data['leads'] = DB::table('leads')
@@ -60,7 +73,10 @@ class AgentController extends Controller
             ->get();
         }
 
-        return response()->json($data);
+       
+        $returnArr = [$data, $transaction];    
+        return response()->json($returnArr);
+        
 
     }
 
@@ -74,6 +90,8 @@ class AgentController extends Controller
             $data['leads'] = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
             ->where('leads.agentid', '=', $agentid)
+            ->orderBy('reminder', 'asc')
+            ->orderBy('time', 'asc')
             ->whereBetween('reminder', [$from, $to])     
             ->get();
         }
@@ -81,6 +99,8 @@ class AgentController extends Controller
             $data['leads'] = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
             ->where('leads.agentid', '=', $agentid)
+            ->orderBy('reminder', 'asc')
+            ->orderBy('time', 'asc')
             ->get(); 
         }
         return response()->json($data);
@@ -94,6 +114,8 @@ class AgentController extends Controller
         $leads = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
             ->where('leads.agentid', '=', $agentid)
+            ->orderBy('reminder', 'asc')
+            ->orderBy('time', 'asc')
             ->get();    
             
         return view('agent.leadtransactionview', [
@@ -112,7 +134,10 @@ class AgentController extends Controller
 
         $leadtransaction = DB::table('leads')
         ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        ->where('leads.agentid', '=', $agentid)
         ->where('leads.id', '=', $id)
+        ->orderBy('reminder', 'asc')
+        ->orderBy('time', 'asc')
         ->get();
       
         return view('agent.leadview', [
@@ -187,11 +212,27 @@ class AgentController extends Controller
         $statuses = DB::table('statuses')->get();
         $agent = User::where('id','=', $agentid)->first();
 
-        $data = DB::table('leads')
-        ->join('statuses', 'leads.id', '=', 'statuses.leadid')
-        ->where('leads.agentid', '=', $agentid)
-        ->get();
+        // $datas = DB::table('leads')
+        //     ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        //     ->where('leads.agentid', '=', $agentid)
+        //     ->get();
 
+        // $transaction = array();
+
+        // foreach($leads as $lead) {
+        //     $transactiondata = Transactiondetail::where('leadid','=', $lead->id)->first();
+
+        //     array_push($transaction, $transactiondata);
+            
+        // }
+        // foreach($transaction as $val){
+        //     echo $val;
+        // }
+        
+    
+       
+
+        
     
         return view('agent.viewleads', [
             'leads' => $leads,

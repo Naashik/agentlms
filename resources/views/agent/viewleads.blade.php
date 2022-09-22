@@ -35,8 +35,11 @@
                 <th id="th" scope="col">Phone number</th>
                 <th id="th" scope="col">Email</th>
                 <th id="th" scope="col">Status</th>
+                <th id="th" scope="col">Recent Transaction</th>
                 <th id="th" scope="col"></th>
                 <th id="th" scope="col"></th>
+
+
 
             </tr>
         </thead>
@@ -69,8 +72,17 @@
             },
             dataType: 'json',
             success: function(result) {
+                var info;
 
-                $.each(result.leads, function(key, value) {
+                // $.each(result[1], function(key, data) {
+                //     if (data.leadid == value.leadid) {
+                //         // var td += `<td>${data.transaction}</td`
+
+
+                //     }
+                // })
+
+                $.each(result[0].leads, function(key, value) {
 
                     var tr = '<tr> <td>' + value
                         .name + ' </td> <td>' + value.phonenumber +
@@ -87,6 +99,10 @@
 
 
                 });
+
+                // $.each(result[1], function(key, value) {
+                //     console.log(value);
+                // })
 
             }
         });
