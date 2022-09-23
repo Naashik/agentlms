@@ -55,6 +55,13 @@
 
         </div>
 
+
+
+        <div class="fv-row mb-8 fs-6">
+            <label for="">Lead Name: <b>{{$lead->name}}</b></label>
+        </div>
+
+
         <div class="fv-row mb-8">
             <!--begin::User-->
             <input type="text" placeholder="Transaction Details" name="transaction" autocomplete="off"
@@ -77,16 +84,8 @@
         <!--end::Link-->
         <!--end::Wrapper-->
         <!--begin::Submit button-->
-
-        <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
-            <!--begin::Indicator label-->
-            <span class="indicator-label">Update</span>
-            <!--end::Indicator label-->
-            <!--begin::Indicator progress-->
-            <span class="indicator-progress">Please wait...
-                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-            <!--end::Indicator progress-->
-        </button>
+        <button type="submit" class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i>
+            Update</button>
         <!--end::Submit button-->
         <!--begin::Sign up-->
     </form>

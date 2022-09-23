@@ -35,9 +35,9 @@
                 <th id="th" scope="col">Phone number</th>
                 <th id="th" scope="col">Email</th>
                 <th id="th" scope="col">Status</th>
-            <!--    <th id="th" scope="col">Recent Transaction</th> -->
+                <!--    <th id="th" scope="col">Recent Transaction</th> -->
                 <th id="th" scope="col" class="w-25"></th>
-        
+
 
 
 
@@ -110,18 +110,18 @@
                 },
                 dataType: 'json',
                 success: function(result) {
-                    $.each(result.leads, function(key, value) {
+                    $.each(result[0].leads, function(key, value) {
                         var tr = '<tr> <td>' + value
                             .name + ' </td> <td>' + value.phonenumber +
                             ' </td> <td> <a href="mailto:' + value.email + '">' +
                             value.email + ' <a/> </td> <td>' + value
                             .status +
-                        ' </td> <td class="d-flex justify-content-center"><img src="../media/logos/zoiper.png"> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
-                        value.leadid +
-                        '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
-                        value.leadid +
-                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;margin-left:10px"></i> View</button></a>  </td>  </tr>';
-                    $("table tbody").append(tr);
+                            ' </td> <td class="d-flex justify-content-center"><img src="../media/logos/zoiper.png"> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
+                            value.leadid +
+                            '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
+                            value.leadid +
+                            '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;margin-left:10px"></i> View</button></a>  </td>  </tr>';
+                        $("table tbody").append(tr);
                     });
                 }
             });

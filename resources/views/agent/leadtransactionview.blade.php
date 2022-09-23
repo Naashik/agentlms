@@ -11,20 +11,20 @@
     <!--begin::Subtitle-->
 
     <!--end::Subtitle=-->
-<div class="d-flex">
-    <div class="d-flex fv-row mb-8 w-25 " >
-        <label class="me-6 form-control bg-transparent" style="width:5rem;font-weight:bold" for="">From</label>
-        <input class="form-control bg-transparent" type="date" id="from" name="from">
-    </div>
+    <div class="d-flex">
+        <div class="d-flex fv-row mb-8 w-25 ">
+            <label class="me-6 form-control bg-transparent" style="width:5rem;font-weight:bold" for="">From</label>
+            <input class="form-control bg-transparent" type="date" id="from" name="from">
+        </div>
 
-    <div class="d-flex fv-row mb-8 w-25">
-        <label class="me-6 form-control bg-transparent mx-5" style="width:5rem;font-weight:bold" for="">To</label>
-        <input class="form-control bg-transparent " type="date" id="to" name="to">
+        <div class="d-flex fv-row mb-8 w-25">
+            <label class="me-6 form-control bg-transparent mx-5" style="width:5rem;font-weight:bold" for="">To</label>
+            <input class="form-control bg-transparent " type="date" id="to" name="to">
+        </div>
     </div>
-</div>
-  <button type="submit" id="search" class="btnfile"><i class="fa-solid fa-filter" style="color:white"></i>
+    <button type="submit" id="search" class="btnfile"><i class="fa-solid fa-filter" style="color:white"></i>
         <!--begin::Indicator label-->
-        <span class="indicator-label"> Filter</span>
+        <span class="indicator-label">Filter</span>
         <!--end::Indicator label-->
         <!--begin::Indicator progress-->
         <!--end::Indicator progress-->
@@ -53,7 +53,7 @@ $(document).ready(function(e) {
 
                 $.each(result.leads, function(key, value) {
 
-                    
+
 
                     var tr = '<tr> <td>' + value
                         .name + ' </td> <td>' + value.transaction +
@@ -63,9 +63,9 @@ $(document).ready(function(e) {
                         '</td> <td style="text-align:center ;" class="w-25"> <form id="form2" method="get" action="/leadview/' +
                         value.leadid +
                         '"></form> <button type="submit" form="form2" class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white"></i> View</button> </td>  </tr>'
-                       
 
-                        
+
+
 
                     $("table tbody").append(tr);
                 });
@@ -107,9 +107,11 @@ $(document).ready(function(e) {
             @endif
             <td>{{$lead->created_at}}</td>
             <td style="text-align:center ;">
-            <a style="margin-right:3rem;margin-left:3rem"  href="/leadview/{{$lead->leadid}}' +
+                <a style="margin-right:3rem;margin-left:3rem" href="/leadview/{{$lead->leadid}}' +
                         value.leadid +
-                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white"></i> View</button></a></td>
+                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white"></i>
+                        View</button></a>
+            </td>
         </tr>
         @endforeach
     </tbody>

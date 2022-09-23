@@ -45,8 +45,7 @@ class AgentController extends Controller
             $transactiondata = Transactiondetail::where('leadid','=', $lead->id)->first();
             if($transactiondata != null){
                 array_push($transaction, $transactiondata);
-            }
-            
+            }        
             
         }
         
@@ -90,6 +89,7 @@ class AgentController extends Controller
             $data['leads'] = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
             ->where('leads.agentid', '=', $agentid)
+            ->where('reminder', '!=', NULL)
             ->orderBy('reminder', 'asc')
             ->orderBy('time', 'asc')
             ->whereBetween('reminder', [$from, $to])     
@@ -99,6 +99,7 @@ class AgentController extends Controller
             $data['leads'] = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
             ->where('leads.agentid', '=', $agentid)
+            ->where('reminder', '!=', NULL)
             ->orderBy('reminder', 'asc')
             ->orderBy('time', 'asc')
             ->get(); 
@@ -114,6 +115,7 @@ class AgentController extends Controller
         $leads = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
             ->where('leads.agentid', '=', $agentid)
+            ->where('reminder', '!=', NULL)
             ->orderBy('reminder', 'asc')
             ->orderBy('time', 'asc')
             ->get();    
@@ -229,6 +231,13 @@ class AgentController extends Controller
         //     echo $val;
         // }
         
+        // $data = DB::table('leads')
+        //     ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+        //     ->leftJoin('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')->limit(1)
+        //     ->where('leads.agentid', '=', $agentid)
+        //     ->get();
+
+        //     echo $data;
     
        
 
