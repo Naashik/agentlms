@@ -36,7 +36,7 @@
                 <th id="th" scope="col">Phone number</th>
                 <th id="th" scope="col">Email</th>
                 <th id="th" scope="col">Status</th>
-                <!--    <th id="th" scope="col">Recent Transaction</th> -->
+                <th id="th" scope="col">Recent Transaction</th>
                 <th id="th" scope="col" style="width:30rem"></th>
 
 
@@ -70,18 +70,27 @@
             },
             dataType: 'json',
             success: function(result) {
-                var info;
-                // $.each(result[1], function(key, data) {
-                //     if (data.leadid == value.leadid) {
-                //         // var td += `<td>${data.transaction}</td`
-                //     }
-                // })
+
+                result[0].leads.forEach((res) => {
+                    res.transaction = 'No Transaction Data'
+                    result[1].forEach((trans) => {
+
+
+                        if (trans.leadid === res.leadid) {
+                            res.transaction = trans.transaction
+                        }
+
+                    })
+                })
+
                 $.each(result[0].leads, function(key, value) {
                     var tr = '<tr> <td>' + value
                         .name + ' </td> <td>' + value.phonenumber +
                         ' </td> <td> <a href="mailto:' + value.email + '"> ' + value.email +
                         ' <a/> </td> <td>' + value
                         .status +
+                        ' </td> <td>' + value
+                        .transaction +
                         ' </td> <td class="d-flex justify-content-center"><img src="../media/logos/zoiper.png"> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
                         value.leadid +
                         '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
@@ -89,9 +98,7 @@
                         '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;margin-left:10px"></i> View</button></a>  </td>  </tr>';
                     $("table tbody").append(tr);
                 });
-                // $.each(result[1], function(key, value) {
-                //     console.log(value);
-                // })
+
             }
         });
     })
@@ -111,12 +118,27 @@
                 },
                 dataType: 'json',
                 success: function(result) {
+
+                    result[0].leads.forEach((res) => {
+                        res.transaction = 'No Transaction Data'
+                        result[1].forEach((trans) => {
+
+                            if (trans.leadid === res.leadid) {
+                                res.transaction = trans.transaction
+                            }
+
+                        })
+                    })
+
+
                     $.each(result[0].leads, function(key, value) {
                         var tr = '<tr> <td>' + value
                             .name + ' </td> <td>' + value.phonenumber +
                             ' </td> <td> <a href="mailto:' + value.email + '">' +
                             value.email + ' <a/> </td> <td>' + value
                             .status +
+                            ' </td> <td>' + value
+                            .transaction +
                             ' </td> <td class="d-flex justify-content-center"><img src="../media/logos/zoiper.png"> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
                             value.leadid +
                             '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +

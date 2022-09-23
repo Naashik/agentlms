@@ -42,7 +42,9 @@ class AgentController extends Controller
         $transaction = array();
 
         foreach($leads as $lead) {
-            $transactiondata = Transactiondetail::where('leadid','=', $lead->id)->first();
+            $transactiondata = Transactiondetail::where('leadid','=', $lead->id)
+            ->orderBy('created_at', 'desc')
+            ->first();
             if($transactiondata != null){
                 array_push($transaction, $transactiondata);
             }        
@@ -212,36 +214,7 @@ class AgentController extends Controller
         $agentid = Session::get('loginId');
         $leads = Lead::where('agentid','=', $agentid)->get();
         $statuses = DB::table('statuses')->get();
-        $agent = User::where('id','=', $agentid)->first();
-
-        // $datas = DB::table('leads')
-        //     ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
-        //     ->where('leads.agentid', '=', $agentid)
-        //     ->get();
-
-        // $transaction = array();
-
-        // foreach($leads as $lead) {
-        //     $transactiondata = Transactiondetail::where('leadid','=', $lead->id)->first();
-
-        //     array_push($transaction, $transactiondata);
-            
-        // }
-        // foreach($transaction as $val){
-        //     echo $val;
-        // }
-        
-        // $data = DB::table('leads')
-        //     ->join('statuses', 'leads.id', '=', 'statuses.leadid')
-        //     ->leftJoin('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')->limit(1)
-        //     ->where('leads.agentid', '=', $agentid)
-        //     ->get();
-
-        //     echo $data;
-    
-       
-
-        
+        $agent = User::where('id','=', $agentid)->first(); 
     
         return view('agent.viewleads', [
             'leads' => $leads,
