@@ -37,7 +37,7 @@
                 <th id="th" scope="col">Email</th>
                 <th id="th" scope="col">Status</th>
                 <!--    <th id="th" scope="col">Recent Transaction</th> -->
-                <th id="th" scope="col" class="w-25"></th>
+                <th id="th" scope="col" style="width:30rem"></th>
 
 
 

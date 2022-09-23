@@ -36,8 +36,8 @@
 
         <!--end::Separator-->
         <!--begin::Input group=-->
-        <div class="d-flex flex-column mb-8 mt-5 m-4">
-            <label class=" m-3">Update Status To :</label>
+        <div class="d-flex flex-column mb-8 mt-5">
+            <label class=" m-1">Update Status To :</label>
 
 
             <div class="d-flex">
@@ -59,7 +59,7 @@
 
 
         <div class="fv-row mb-8 fs-6">
-            <label for="">Lead Name: <b>{{$lead->name}}</b></label>
+            <label for="">Name: <b>{{$lead->name}}</b></label>
         </div>
 
 
