@@ -2,6 +2,7 @@
 @section('content')
 
 <div id="kt_app_content" class="app-content flex-column-fluid col-6 col-sm-6  col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+<button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left" style="color:white;margin-top:0.2rem"></i></button>
     <div class="mt-10 mb-5 px-5">
 
         <h2 style="font-size:20px">LEAD UPDATE</h2>

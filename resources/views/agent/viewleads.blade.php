@@ -1,11 +1,12 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
 @section('dashboard_select','active')
+@section('leaddrop_select','here show')
 
 <div>
     <div class="mt-10 m-5 ">
 
-        <h2 style="font-size:20px">Lead Details</h2>
+        <h2 style="font-size:20px">LEAD DETAILS</h2>
 
 
         <!--end::Title-->

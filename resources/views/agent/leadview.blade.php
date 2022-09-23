@@ -1,8 +1,10 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
 
-<div>
+<div >
+<button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left" style="color:white;margin-top:0.2rem"></i></button>
     <div class="mt-10 m-5 ">
+
         <div class="d-grid">
 
             <h2 style="font-size:20px">LEAD PROFILE</h2>
