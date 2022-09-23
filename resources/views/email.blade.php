@@ -87,27 +87,27 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--begin::Title-->
                                 <h1 class="text-dark fw-bolder mb-3" style="font-size:40px">EDGE</h1>
                                 <h2 style="font-size:20px">Email Verification</h2>
-                                <p style="font-size:13px">Check you mail for the code</p>
-                                <div id="ct"></div>
-                            <script type="text/javascript"> 
-function display_c(){
-var refresh=1000; // Refresh rate in milli seconds
-mytime=setTimeout('display_ct()',refresh)
-}
 
-function display_ct() {
-var x = new Date()
-document.getElementById('ct').innerHTML = x;
-display_c();
- }
-</script>
+                                <div id="ct"></div>
+                                <script type="text/javascript">
+                                function display_c() {
+                                    var refresh = 1000; // Refresh rate in milli seconds
+                                    mytime = setTimeout('display_ct()', refresh)
+                                }
+
+                                function display_ct() {
+                                    var x = new Date()
+                                    document.getElementById('ct').innerHTML = x;
+                                    display_c();
+                                }
+                                </script>
 
                             </div>
 
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
-                                <input type="number" placeholder="Enter the code" name="number" autocomplete="off"
-                                    class="form-control bg-transparent" />
+                                <input type="number" placeholder="Enter your verification code" name="number"
+                                    autocomplete="off" class="form-control bg-transparent" />
                                 <span class="text-danger">@error('number') {{$error}} @enderror</span>
                             </div>
 
@@ -124,7 +124,7 @@ display_c();
                         </form>
                         <!--end::Form-->
                         <!--Timer Start-->
-                       
+
 
 
                         <!--Timer End-->

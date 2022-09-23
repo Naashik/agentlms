@@ -231,6 +231,7 @@ class AgentController extends Controller
         $leads = Lead::where('agentid','=', $agentid)->get();
         $leadstatus = DB::table('leads')
         ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        ->where('reminder', '!=', NULL)
         ->get();
         $agent = User::where('id','=', $agentid)->first();
 
