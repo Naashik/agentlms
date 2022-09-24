@@ -39,7 +39,6 @@
                 <th id="th" scope="col">Recent Transaction</th>
                 <th id="th" scope="col" style="width:30rem; text-align: center">Actions</th>
 
-
             </tr>
         </thead>
 
@@ -82,14 +81,29 @@
                 })
 
                 $.each(result[0].leads, function(key, value) {
+
+                    var val;
+
+                    if (value.status == "Assigned") {
+                        val += `<td><img src="../media/logos/button-right.png"
+                                                    style="width: 15px; margin-right: 2px" alt="" />${value.status}
+                                            </td>`
+                    } else if (value.status == "Assigned") {
+                        val += `<td><img src="../media/logos/button-wrong.png"
+                                                    style="width: 15px; margin-right: 2px" alt="" />${value.status}
+                                            </td>`
+                    } else {
+                        val += `<td>${value.status} </td>`
+                    }
+
                     var tr = '<tr> <td>' + value
-                        .name + ' </td> <td>' + value.phonenumber +
-                        ' </td> <td> <a href="mailto:' + value.email + '"> ' + value.email +
-                        ' <a/> </td> <td>' + value
-                        .status +
-                        ' </td> <td>' + value
+                        .name + ' </td> <td> <a href="tel: ' + value.phonenumber + '">' +
+                        value.phonenumber +
+                        ' </a> </td> <td> <a href="mailto:' + value.email + '"> ' + value
+                        .email +
+                        ' <a/> </td> ' + val + ' <td>' + value
                         .transaction +
-                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
+                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:15px;margin-left:15px"  href="/updatelead/' +
                         value.leadid +
                         '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
                         value.leadid +
@@ -131,8 +145,11 @@
 
                     $.each(result[0].leads, function(key, value) {
                         var tr = '<tr> <td>' + value
-                            .name + ' </td> <td>' + value.phonenumber +
-                            ' </td> <td> <a href="mailto:' + value.email + '">' +
+                            .name + ' </td> <td> <a href="tel: ' + value
+                            .phonenumber + '">' +
+                            value.phonenumber +
+                            ' </a> </td> <td> <a href="mailto:' + value.email +
+                            '">' +
                             value.email + ' <a/> </td> <td>' + value
                             .status +
                             ' </td> <td>' + value

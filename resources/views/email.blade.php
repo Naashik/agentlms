@@ -116,6 +116,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="d-grid mb-10">
                                 <button type="submit" class="btn btn-primary">
                                     <!--begin::Indicator label-->
+                                    <i class="fa-solid fa-check-double"></i>
                                     <span>VERIFY</span>
 
                                 </button>

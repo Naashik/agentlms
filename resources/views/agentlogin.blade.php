@@ -90,18 +90,18 @@ License: For each use you must have a valid license purchased only from above li
                                 <h1 class="text-dark fw-bolder mb-3" style="font-size:40px">EDGE</h1>
                                 <h2 style="font-size:20px">Agent Login</h2>
                                 <div id="ct"></div>
-                            <script type="text/javascript"> 
-function display_c(){
-var refresh=1000; // Refresh rate in milli seconds
-mytime=setTimeout('display_ct()',refresh)
-}
+                                <script type="text/javascript">
+                                function display_c() {
+                                    var refresh = 1000; // Refresh rate in milli seconds
+                                    mytime = setTimeout('display_ct()', refresh)
+                                }
 
-function display_ct() {
-var x = new Date()
-document.getElementById('ct').innerHTML = x;
-display_c();
- }
-</script>
+                                function display_ct() {
+                                    var x = new Date()
+                                    document.getElementById('ct').innerHTML = x;
+                                    display_c();
+                                }
+                                </script>
                                 <!--end::Title-->
                                 <!--begin::Subtitle-->
 
@@ -144,6 +144,7 @@ display_c();
                             <div class="d-grid mb-10">
                                 <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
                                     <!--begin::Indicator label-->
+                                    <i class="fa-solid fa-unlock"></i>
                                     <span class="indicator-label">Log In</span>
                                     <!--end::Indicator label-->
                                     <!--begin::Indicator progress-->
@@ -152,7 +153,7 @@ display_c();
                                     <!--end::Indicator progress-->
                                 </button>
                             </div>
-                          
+
                             <!--end::Submit button-->
                             <!--begin::Sign up-->
 

@@ -266,7 +266,8 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu"
                                 data-kt-menu="true" data-kt-menu-expand="false">
                                 <!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @yield('drop_select')">
+                                <div data-kt-menu-trigger="click"
+                                    class="menu-item menu-accordion @yield('drop_select')">
                                     <!--begin:Menu link-->
                                     <span class="menu-link">
                                         <span class="menu-icon">
@@ -285,7 +286,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </span>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-title">Dashboards</span>
+                                        <span class="menu-title">Dashboard</span>
                                         <span class="menu-arrow"></span>
                                     </span>
                                     <div class="menu-sub menu-sub-accordion">
@@ -312,7 +313,8 @@ License: For each use you must have a valid license purchased only from above li
 
                                     <!--end:Menu sub-->
                                 </div>
-                                <div data-kt-menu-trigger="click" class="menu-item  menu-accordion @yield('leaddrop_select')">
+                                <div data-kt-menu-trigger="click"
+                                    class="menu-item  menu-accordion @yield('leaddrop_select')">
                                     <!--begin:Menu link-->
                                     <span class="menu-link">
                                         <span class="menu-icon">
