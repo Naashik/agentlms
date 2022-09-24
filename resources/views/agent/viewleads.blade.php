@@ -89,7 +89,7 @@
                         .status +
                         ' </td> <td>' + value
                         .transaction +
-                        ' </td> <td class="d-flex justify-content-center"><img src="../media/logos/zoiper.png"> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
+                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
                         value.leadid +
                         '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
                         value.leadid +
@@ -137,7 +137,7 @@
                             .status +
                             ' </td> <td>' + value
                             .transaction +
-                            ' </td> <td class="d-flex justify-content-center"><img src="../media/logos/zoiper.png"> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
+                            ' </td> <td class="d-flex justify-content-center"><button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
                             value.leadid +
                             '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
                             value.leadid +
