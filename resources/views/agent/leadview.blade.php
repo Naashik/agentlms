@@ -1,8 +1,9 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
 
-<div >
-<button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left" style="color:white;margin-top:0.2rem"></i></button>
+<div>
+    <button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left"
+            style="color:white;margin-top:0.2rem"></i></button>
     <div class="mt-10 m-5 ">
 
         <div class="d-grid">
@@ -26,6 +27,27 @@
                 <tr>
                     <th id="th">Email</th>
                     <td>{{$lead->email}}</td>
+                </tr>
+                <tr>
+                    <th id="th">Account Number</th>
+                    <td>@if(isset($lead->accountnumber)) {{$lead->accountnumber}} @else
+                        Null @endif</td>
+                </tr>
+                <tr>
+                    <th id="th">Retention Status</th>
+                    <td>@if(isset($status->retentionstatus)) {{$status->retentionstatus}} @else
+                        Null @endif</td>
+                </tr>
+
+                <tr>
+                    <th id="th">Progress Status</th>
+                    <td>@if(isset($status->progressstatus)) {{$status->progressstatus}} @else
+                        Null @endif</td>
+                </tr>
+                <tr>
+                    <th id="th">Status</th>
+                    <td>@if(isset($status->status)) {{$status->status}} @else
+                        Null @endif</td>
                 </tr>
                 <tr>
                     <th id="th">Phone</th>
@@ -104,7 +126,7 @@
                     @endif
                     <td>{{$transaction->created_at}}</td>
 
-                <!--    <td style="text-align:center ;">
+                    <!--    <td style="text-align:center ;">
                         <form method="POST" action="/deletetransaction/{{$transaction->id}}">
                             @csrf
                             <input name="_method" type="hidden" value="DELETE">

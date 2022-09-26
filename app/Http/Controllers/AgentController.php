@@ -133,6 +133,7 @@ class AgentController extends Controller
         $agentid = Session::get('loginId');
         $lead = Lead::where('id','=', $id)->first();
         $leaddetails = Leaddetail::where('leadid','=', $id)->first();
+        $status = Status::where('leadid','=', $id)->first();
         $countrydetails = Countrydetail::where('leadid','=', $id)->first();
         $agent = User::where('id','=', $agentid)->first();
 
@@ -150,6 +151,7 @@ class AgentController extends Controller
             'leaddetails' => $leaddetails,
             'countrydetails' => $countrydetails,
             'leadtransaction' => $leadtransaction,
+            'status' => $status,
         ]);
     }
 
@@ -171,7 +173,7 @@ class AgentController extends Controller
         $date = Carbon::today()->toDateString();
 
         $result = Status::where('leadid', $id)
-        ->update(['status' => $request->status, 'retentionstatus' => $request->retentionstatus]);
+        ->update(['progressstatus' => $request->status, 'retentionstatus' => $request->retentionstatus]);
 
         if($request->transaction){
             $transactiondetail = new Transactiondetail; 

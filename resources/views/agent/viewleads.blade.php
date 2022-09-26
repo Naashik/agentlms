@@ -36,6 +36,7 @@
                 <th id="th" scope="col">Phone number</th>
                 <th id="th" scope="col">Email</th>
                 <th id="th" scope="col" style="width:7rem;">Status</th>
+                <th id="th" scope="col" style="width:7rem;">Progress Status</th>
                 <th id="th" scope="col" style="width:7rem;">Retention Status</th>
                 <th id="th" scope="col">Recent Transaction</th>
                 <th id="th" scope="col" style="width:25rem; text-align: center">Actions</th>
@@ -68,23 +69,16 @@
             },
             dataType: 'json',
             success: function(result) {
-
                 result[0].leads.forEach((res) => {
                     res.transaction = 'No Transaction Data'
                     result[1].forEach((trans) => {
-
-
                         if (trans.leadid === res.leadid) {
                             res.transaction = trans.transaction
                         }
-
                     })
                 })
-
                 $.each(result[0].leads, function(key, value) {
-
                     var val;
-
                     if (value.status == "Assigned") {
                         val += `<td><img src="../media/logos/button-right.png"
                                                     style="width: 15px; margin-right: 2px" alt="" />${value.status}
@@ -96,14 +90,14 @@
                     } else {
                         val += `<td>${value.status} </td>`
                     }
-
                     var tr = '<tr> <td>' + value
                         .name + ' </td> <td> <a href="tel: ' + value.phonenumber + '">' +
                         value.phonenumber +
                         ' </a> </td> <td> <a href="mailto:' + value.email + '"> ' + value
                         .email +
                         ' <a/> </td> ' + val +
-                        ' <td> ' + value.retentionstatus + ' </td> <td>' + value
+                        ' <td>' + value.progressstatus + ' </td> <td> ' + value
+                        .retentionstatus + ' </td> <td>' + value
                         .transaction +
                         ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:1rem;margin-left:1rem"  href="/updatelead/' +
                         value.leadid +
@@ -112,7 +106,6 @@
                         '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a>  </td>  </tr>';
                     $("table tbody").append(tr);
                 });
-
             }
         });
     })
@@ -132,22 +125,16 @@
                 },
                 dataType: 'json',
                 success: function(result) {
-
                     result[0].leads.forEach((res) => {
                         res.transaction = 'No Transaction Data'
                         result[1].forEach((trans) => {
-
                             if (trans.leadid === res.leadid) {
                                 res.transaction = trans.transaction
                             }
-
                         })
                     })
-
                     $.each(result[0].leads, function(key, value) {
-
                         var val;
-
                         if (value.status == "Assigned") {
                             val += `<td><img src="../media/logos/button-right.png"
                                                     style="width: 15px; margin-right: 2px" alt="" />${value.status}
@@ -159,9 +146,6 @@
                         } else {
                             val += `<td>${value.status} </td>`
                         }
-
-
-
                         var tr = '<tr> <td>' + value
                             .name + ' </td> <td> <a href="tel: ' + value
                             .phonenumber + '">' +
@@ -181,7 +165,6 @@
                             '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;margin-left:10px"></i> View</button></a>  </td>  </tr>';
                         $("table tbody").append(tr);
                     });
-
                 }
             });
         });
