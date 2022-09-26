@@ -19,9 +19,7 @@
 
             <select name="status" id="status" class="form-control m-5 box fw-bold" style="width:13rem">
                 <option value='All'>All</option>
-                <option value='Assigned'>New</option>
-                <option value='Work in progress'>Work in progress</option>
-                <option value='Closed'>Closed</option>
+
 
             </select>
         </div>
@@ -99,11 +97,11 @@
                         ' <td>' + value.progressstatus + ' </td> <td> ' + value
                         .retentionstatus + ' </td> <td>' + value
                         .transaction +
-                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:1rem;margin-left:1rem"  href="/updatelead/' +
+                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:1rem;margin-left:1rem" href="/leadview/' +
                         value.leadid +
-                        '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
+                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a> <a   href="/updatelead/' +
                         value.leadid +
-                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a>  </td>  </tr>';
+                        '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>   </td>  </tr>';
                     $("table tbody").append(tr);
                 });
             }
@@ -158,11 +156,11 @@
                             .retentionstatus + ' </td> <td>' +
                             value
                             .transaction +
-                            ' </td> <td class="d-flex justify-content-center"><button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:15px; margin-left:15px"  href="/updatelead/' +
-                            value.leadid +
-                            '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
-                            value.leadid +
-                            '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;margin-left:10px"></i> View</button></a>  </td>  </tr>';
+                            ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:1rem;margin-left:1rem" href="/leadview/' +
+                        value.leadid +
+                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a> <a   href="/updatelead/' +
+                        value.leadid +
+                        '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>   </td>  </tr>';
                         $("table tbody").append(tr);
                     });
                 }

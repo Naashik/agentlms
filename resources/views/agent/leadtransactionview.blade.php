@@ -3,8 +3,7 @@
 @section('transaction_select','active')
 @section('leaddrop_select','here show')
 
-<button onclick="history.back()" class="btnback mx-5 mt-5" style="width: 4rem"><i class="fa-solid fa-angles-left"
-        style="color:white;margin-top:0.2rem"></i></button>
+
 <div class="mt-10 m-5 ">
 
     <h2 style="font-size:20px" class="mb-5">REMINDER DETAILS</h2>
