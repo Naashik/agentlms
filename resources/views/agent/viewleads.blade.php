@@ -35,9 +35,10 @@
                 <th id="th" scope="col">Name</th>
                 <th id="th" scope="col">Phone number</th>
                 <th id="th" scope="col">Email</th>
-                <th id="th" scope="col">Status</th>
+                <th id="th" scope="col" style="width:7rem;">Status</th>
+                <th id="th" scope="col" style="width:7rem;">Retention Status</th>
                 <th id="th" scope="col">Recent Transaction</th>
-                <th id="th" scope="col" style="width:30rem; text-align: center">Actions</th>
+                <th id="th" scope="col" style="width:25rem; text-align: center">Actions</th>
 
             </tr>
         </thead>
@@ -88,7 +89,7 @@
                         val += `<td><img src="../media/logos/button-right.png"
                                                     style="width: 15px; margin-right: 2px" alt="" />${value.status}
                                             </td>`
-                    } else if (value.status == "Assigned") {
+                    } else if (value.status == "Unassigned") {
                         val += `<td><img src="../media/logos/button-wrong.png"
                                                     style="width: 15px; margin-right: 2px" alt="" />${value.status}
                                             </td>`
@@ -101,7 +102,8 @@
                         value.phonenumber +
                         ' </a> </td> <td> <a href="mailto:' + value.email + '"> ' + value
                         .email +
-                        ' <a/> </td> ' + val + ' <td>' + value
+                        ' <a/> </td> ' + val +
+                        ' <td> ' + value.retentionstatus + ' </td> <td>' + value
                         .transaction +
                         ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:15px;margin-left:15px"  href="/updatelead/' +
                         value.leadid +
@@ -142,25 +144,44 @@
                         })
                     })
 
-
                     $.each(result[0].leads, function(key, value) {
+
+                        var val;
+
+                        if (value.status == "Assigned") {
+                            val += `<td><img src="../media/logos/button-right.png"
+                                                    style="width: 15px; margin-right: 2px" alt="" />${value.status}
+                                            </td>`
+                        } else if (value.status == "Unassigned") {
+                            val += `<td><img src="../media/logos/button-wrong.png"
+                                                    style="width: 15px; margin-right: 2px" alt="" />${value.status}
+                                            </td>`
+                        } else {
+                            val += `<td>${value.status} </td>`
+                        }
+
+
+
                         var tr = '<tr> <td>' + value
                             .name + ' </td> <td> <a href="tel: ' + value
                             .phonenumber + '">' +
                             value.phonenumber +
-                            ' </a> </td> <td> <a href="mailto:' + value.email +
+                            ' </a> </td> <td> <a href="mailto:' + value
+                            .email +
                             '">' +
-                            value.email + ' <a/> </td> <td>' + value
-                            .status +
-                            ' </td> <td>' + value
+                            value.email + ' <a/> </td> ' + val +
+                            '  <td> ' + value
+                            .retentionstatus + ' </td> <td>' +
+                            value
                             .transaction +
-                            ' </td> <td class="d-flex justify-content-center"><button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:3rem;margin-left:3rem"  href="/updatelead/' +
+                            ' </td> <td class="d-flex justify-content-center"><button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:15px; margin-left:15px"  href="/updatelead/' +
                             value.leadid +
                             '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
                             value.leadid +
                             '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;margin-left:10px"></i> View</button></a>  </td>  </tr>';
                         $("table tbody").append(tr);
                     });
+
                 }
             });
         });

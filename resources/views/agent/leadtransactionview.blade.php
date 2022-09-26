@@ -2,6 +2,9 @@
 @section('content')
 @section('transaction_select','active')
 @section('leaddrop_select','here show')
+
+<button onclick="history.back()" class="btnback mx-5 mt-5" style="width: 4rem"><i class="fa-solid fa-angles-left"
+        style="color:white;margin-top:0.2rem"></i></button>
 <div class="mt-10 m-5 ">
 
     <h2 style="font-size:20px" class="mb-5">REMINDER DETAILS</h2>
@@ -96,7 +99,7 @@ $(document).ready(function(e) {
             <td>{{$lead->name}}</td>
             <td>{{$lead->transaction}}</td>
             @if ($lead->reminder)
-            <td>{{$lead->reminder}}</td>
+            <td>{{date('m-d-Y', strtotime($lead->reminder))}}</td>
             @else
             <td>NULL</td>
             @endif

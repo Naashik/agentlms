@@ -171,7 +171,7 @@ class AgentController extends Controller
         $date = Carbon::today()->toDateString();
 
         $result = Status::where('leadid', $id)
-        ->update(['status' => $request->status]);
+        ->update(['status' => $request->status, 'retentionstatus' => $request->retentionstatus]);
 
         if($request->transaction){
             $transactiondetail = new Transactiondetail; 
@@ -231,6 +231,7 @@ class AgentController extends Controller
         $leads = Lead::where('agentid','=', $agentid)->get();
         $leadstatus = DB::table('leads')
         ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        ->where('agentid', '=', $agentid)
         ->where('reminder', '!=', NULL)
         ->get();
         $agent = User::where('id','=', $agentid)->first();
@@ -305,6 +306,7 @@ public function emailUser(Request $request)
 
     $leadtransaction = DB::table('leads')
         ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        ->where('agentid', '=', $userId)
         ->get();
 
      if($user){

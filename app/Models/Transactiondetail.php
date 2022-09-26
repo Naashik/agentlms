@@ -9,5 +9,7 @@ class Transactiondetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['leadid'];  
+    protected $fillable = ['leadid']; 
+    
+    protected $dates = ['reminder'];
 }

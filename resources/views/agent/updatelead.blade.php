@@ -2,7 +2,8 @@
 @section('content')
 
 <div id="kt_app_content" class="app-content flex-column-fluid col-6 col-sm-6  col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-<button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left" style="color:white;margin-top:0.2rem"></i></button>
+    <button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left"
+            style="color:white;margin-top:0.2rem"></i></button>
     <div class="mt-10 mb-5 px-5">
 
         <h2 style="font-size:20px">LEAD UPDATE</h2>
@@ -54,7 +55,28 @@
                 </div>
             </div>
 
+            <label class=" m-1">Update Retention Status To :</label>
+
+
+            <div class="d-flex">
+                <div class="form-group">
+                    <label class="bg-transparent ">
+                        <div class="box fw-bold ">
+                            <select name="retentionstatus" class="form-control">
+
+                                <option value='Active'>Active</option>
+                                <option value='Non Active'>Non Active</option>
+
+                            </select>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
         </div>
+
+
+
 
 
 
@@ -73,7 +95,7 @@
 
         <div class="d-flex fv-row mb-8">
             <label class="me-6 form-control bg-transparent" for="">Reminder Date</label>
-            <input class="form-control bg-transparent" type="date" name="date">
+            <input class="form-control bg-transparent" type="date" data-date-format="DD MMMM YYYY" name="date">
         </div>
 
         <div class="d-flex fv-row mb-8">
