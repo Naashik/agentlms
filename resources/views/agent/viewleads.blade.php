@@ -105,11 +105,11 @@
                         ' <a/> </td> ' + val +
                         ' <td> ' + value.retentionstatus + ' </td> <td>' + value
                         .transaction +
-                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:15px;margin-left:15px"  href="/updatelead/' +
+                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:1rem;margin-left:1rem"  href="/updatelead/' +
                         value.leadid +
                         '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>  <a href="/leadview/' +
                         value.leadid +
-                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;margin-left:10px"></i> View</button></a>  </td>  </tr>';
+                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a>  </td>  </tr>';
                     $("table tbody").append(tr);
                 });
 
