@@ -58,19 +58,11 @@ class AgentController extends Controller
             ->get();
         }
 
-        else if($request->status == "New") {
-            $data['leads'] = DB::table('leads')
-                ->join('statuses', 'leads.id', '=', 'statuses.leadid')
-                ->orderBy('statuses.updated_at','desc')
-                ->where('leads.agentid', '=', $agentid)
-                ->where('statuses.status', '=', $request->status)
-                ->get();
-        }
         else {
             $data['leads'] = DB::table('leads')
             ->join('statuses', 'leads.id', '=', 'statuses.leadid')
             ->where('leads.agentid', '=', $agentid)
-            ->where('statuses.status', '=', $request->status)
+            ->where('statuses.progressstatus', '=', $request->status)
             ->get();
         }
 
@@ -215,10 +207,12 @@ class AgentController extends Controller
 
         $agentid = Session::get('loginId');
         $leads = Lead::where('agentid','=', $agentid)->get();
+        $statusvalues = DB::table('statusvalues')->get();
         $statuses = DB::table('statuses')->get();
         $agent = User::where('id','=', $agentid)->first(); 
     
         return view('agent.viewleads', [
+            'statusvalues' => $statusvalues,
             'leads' => $leads,
             'agent' => $agent,
             'statuses' => $statuses,
