@@ -86,7 +86,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="text-center mb-10">
                                 <!--begin::Title-->
                                 <h1 class="text-dark fw-bolder mb-3" style="font-size:40px">EDGE</h1>
-                                <h2 style="font-size:20px">Email Verification</h2>
+                                <h2 style="font-size:20px">Verification</h2>
 
                                 <div id="ct"></div>
                                 <script type="text/javascript">

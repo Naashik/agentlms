@@ -2,8 +2,8 @@
 @section('content')
 
 <div>
-    <button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left"
-            style="color:white;margin-top:0.2rem"></i></button>
+<!-- <button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left"
+            style="color:white;margin-top:0.2rem"></i></button> -->
     <div class="mt-10 m-5 ">
 
         <div class="d-grid">
@@ -99,9 +99,9 @@
             <thead>
                 <tr>
                     <th id="th" scope="col">Transaction Details</th>
+                    <th id="th" scope="col">Amount</th>
                     <th id="th" scope="col">Reminder date</th>
                     <th id="th" scope="col">Reminder time</th>
-                    <th id="th" scope="col">Amount</th>
                     <th id="th" scope="col">Created at</th>
 
 
@@ -118,6 +118,11 @@
                     @else
                     <td>NULL</td>
                     @endif
+                    @if ($transaction->amount)
+                    <td>{{$transaction->amount}}</td>
+                    @else
+                    <td>NULL</td>
+                    @endif
                     @if ($transaction->reminder)
                     <td>{{$transaction->reminder}}</td>
                     @else
@@ -128,11 +133,7 @@
                     @else
                     <td>NULL</td>
                     @endif
-                    @if ($transaction->amount)
-                    <td>{{$transaction->amount}}</td>
-                    @else
-                    <td>NULL</td>
-                    @endif
+                  
                     <td>{{$transaction->created_at}}</td>
 
                     <!--    <td style="text-align:center ;">
