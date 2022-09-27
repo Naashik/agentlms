@@ -101,6 +101,7 @@
                     <th id="th" scope="col">Transaction Details</th>
                     <th id="th" scope="col">Reminder date</th>
                     <th id="th" scope="col">Reminder time</th>
+                    <th id="th" scope="col">Amount</th>
                     <th id="th" scope="col">Created at</th>
 
 
@@ -112,8 +113,11 @@
             <tbody>
                 @foreach($leadtransaction as $transaction)
                 <tr>
-
+                    @if ($transaction->transaction)
                     <td>{{$transaction->transaction}}</td>
+                    @else
+                    <td>NULL</td>
+                    @endif
                     @if ($transaction->reminder)
                     <td>{{$transaction->reminder}}</td>
                     @else
@@ -121,6 +125,11 @@
                     @endif
                     @if ($transaction->time)
                     <td>{{$transaction->time}}</td>
+                    @else
+                    <td>NULL</td>
+                    @endif
+                    @if ($transaction->amount)
+                    <td>{{$transaction->amount}}</td>
                     @else
                     <td>NULL</td>
                     @endif

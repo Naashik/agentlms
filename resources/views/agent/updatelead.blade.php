@@ -82,6 +82,22 @@
             <label for="">Name: <b>{{$lead->name}}</b></label>
         </div>
 
+        <div class="fv-row mb-8 d-flex align-items-center">
+            <!--begin::User-->
+            <input type="text" placeholder="Amount" name="amount" autocomplete="off" class="form-control bg-transparent"
+                value={{old('amount')}}>
+            <span class="text-danger">@error('amount') {{$message}} @enderror</span>
+            <span class="ms-2">
+                <b>Rs</b>
+            </span>
+
+            <!--end::User-->
+        </div>
+
+
+
+
+
 
         <div class="fv-row mb-8">
             <!--begin::User-->

@@ -43,6 +43,7 @@ class AgentController extends Controller
 
         foreach($leads as $lead) {
             $transactiondata = Transactiondetail::where('leadid','=', $lead->id)
+            ->where('transaction', '!=', null)
             ->orderBy('created_at', 'desc')
             ->first();
             if($transactiondata != null){
@@ -162,16 +163,16 @@ class AgentController extends Controller
 
     public function updatedetails(Request $request, $id) {
 
-        $date = Carbon::today()->toDateString();
 
         $result = Status::where('leadid', $id)
         ->update(['progressstatus' => $request->status, 'retentionstatus' => $request->retentionstatus]);
 
-        if($request->transaction){
+        if($request->transaction || $request->amount ){
             $transactiondetail = new Transactiondetail; 
             $transactiondetail->transaction = $request->transaction;
             $transactiondetail->reminder = $request->date;
             $transactiondetail->time = $request->time;
+            $transactiondetail->amount = $request->amount;
             $transactiondetail->leadid = $id;
             
           $res = $transactiondetail->save();
