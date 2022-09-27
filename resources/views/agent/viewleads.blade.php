@@ -99,9 +99,9 @@
                         ' <td>' + value.progressstatus + ' </td> <td> ' + value
                         .retentionstatus + ' </td> <td>' + value
                         .transaction +
-                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:1rem;margin-left:1rem" href="/leadview/' +
+                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a target="_blank" style="margin-right:1rem;margin-left:1rem" href="/leadview/' +
                         value.leadid +
-                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a> <a   href="/updatelead/' +
+                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a> <a target="_blank"   href="/updatelead/' +
                         value.leadid +
                         '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>   </td>  </tr>';
                     $("table tbody").append(tr);
@@ -158,9 +158,9 @@
                             .retentionstatus + ' </td> <td>' +
                             value
                             .transaction +
-                            ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a style="margin-right:1rem;margin-left:1rem" href="/leadview/' +
+                            ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a target="_blank" style="margin-right:1rem;margin-left:1rem" href="/leadview/' +
                             value.leadid +
-                            '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a> <a   href="/updatelead/' +
+                            '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a> <a target="_blank"  href="/updatelead/' +
                             value.leadid +
                             '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>   </td>  </tr>';
                         $("table tbody").append(tr);

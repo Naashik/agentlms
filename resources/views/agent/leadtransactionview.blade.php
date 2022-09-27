@@ -62,7 +62,7 @@ $(document).ready(function(e) {
                         ' </td> <td>' + value.reminder +
                         ' </td> <td>' + value.time +
                         '</td>  <td>' + value.created_at +
-                        '</td> <td style="text-align:center ;" class="w-25"> <form id="form2" method="get" action="/leadview/' +
+                        '</td> <td style="text-align:center ;" class="w-25"> <form target="_blank" id="form2" method="get" action="/leadview/' +
                         value.leadid +
                         '"></form> <button type="submit" form="form2" class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white"></i> View</button> </td>  </tr>'
 
@@ -109,7 +109,7 @@ $(document).ready(function(e) {
             @endif
             <td>{{$lead->created_at}}</td>
             <td style="text-align:center ;">
-                <a style="margin-right:3rem;margin-left:3rem" href="/leadview/{{$lead->leadid}}' +
+                <a target="_blank" style="margin-right:3rem;margin-left:3rem" href="/leadview/{{$lead->leadid}}' +
                         value.leadid +
                         '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white"></i>
                         View</button></a>
