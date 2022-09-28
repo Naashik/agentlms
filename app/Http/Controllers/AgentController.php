@@ -134,8 +134,7 @@ class AgentController extends Controller
         ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
         ->where('leads.agentid', '=', $agentid)
         ->where('leads.id', '=', $id)
-        ->orderBy('reminder', 'asc')
-        ->orderBy('time', 'asc')
+        ->orderBy('transactiondetails.created_at', 'desc')
         ->get();
       
         return view('agent.leadview', [

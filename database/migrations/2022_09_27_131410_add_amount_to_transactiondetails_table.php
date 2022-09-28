@@ -14,7 +14,7 @@ class AddAmountToTransactiondetailsTable extends Migration
     public function up()
     {
         Schema::table('transactiondetails', function (Blueprint $table) {
-            $table->decimal('amount', $precision = 8, $scale = 2);
+            $table->decimal('amount', $precision = 8, $scale = 2)->nullable();
         });
     }
 
