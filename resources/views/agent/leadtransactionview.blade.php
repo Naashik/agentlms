@@ -2,6 +2,7 @@
 @section('content')
 @section('transaction_select','active')
 @section('leaddrop_select','here show')
+@section('title_select','Reminders')
 
 
 <div class="mt-10 m-5 ">

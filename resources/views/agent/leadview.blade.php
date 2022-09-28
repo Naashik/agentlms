@@ -1,5 +1,6 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
+@section('title_select','Lead Profile')
 
 <div>
 <!-- <button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left"

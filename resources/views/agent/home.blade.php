@@ -2,6 +2,7 @@
 @section('content')
 @section('home_select','active')
 @section('drop_select','here show')
+@section('title_select','Dashboard')
 
 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
     <!--begin::Content wrapper-->

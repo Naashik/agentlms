@@ -1,7 +1,8 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
 @section('dashboard_select','active')
-@section('leaddrop_select','here show')
+@section('leaddrop_select','here show').
+@section('title_select','Lead Details')
 
 <div>
     <div class="mt-10 m-5 ">

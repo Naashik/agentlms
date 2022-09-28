@@ -1,5 +1,6 @@
 @extends('layouts.layout', ['agent' => $agent])
 @section('content')
+@section('title_select','Lead Update')
 
 <div id="kt_app_content" class="app-content flex-column-fluid col-6 col-sm-6  col-md-3 col-lg-3 col-xl-3 col-xxl-3">
  <!--   <button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left"
@@ -87,9 +88,7 @@
             <input type="text" placeholder="Amount" name="amount" autocomplete="off" class="form-control bg-transparent"
                 value={{old('amount')}}>
             <span class="text-danger">@error('amount') {{$message}} @enderror</span>
-            <span class="ms-2">
-                <b>Rs</b>
-            </span>
+          
 
             <!--end::User-->
         </div>
