@@ -59,7 +59,7 @@ $(document).ready(function(e) {
 
 
                     var tr = '<tr> <td>' + value
-                        .name + ' </td> <td>' + value.transaction +
+                        .name + ' </td> <td>' + value.transaction + 
                         ' </td> <td>' + value.reminder +
                         ' </td> <td>' + value.time +
                         '</td>  <td>' + value.created_at +

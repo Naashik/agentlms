@@ -95,7 +95,7 @@
     </div>
     <div class="d-flex">
 
-        <table class="table mt-10 w-50 m-5 caption-top">
+        <table class="table mt-10 w-75 m-5 caption-top">
             <caption style="color:black;font-weight:bold">Transaction Details</caption>
             <thead>
                 <tr>
@@ -120,7 +120,7 @@
                     <td>NULL</td>
                     @endif
                     @if ($transaction->amount)
-                    <td>{{$transaction->amount}}</td>
+                    <td>{{$transaction->amount}} {{$transaction->currency}}</td>
                     @else
                     <td>NULL</td>
                     @endif

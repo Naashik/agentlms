@@ -162,22 +162,25 @@ class AgentController extends Controller
 
     public function updatedetails(Request $request, $id) {
 
+        $transactiondetail = new Transactiondetail;
+
 
         $result = Status::where('leadid', $id)
         ->update(['progressstatus' => $request->status, 'retentionstatus' => $request->retentionstatus]);
 
-        if($request->transaction || $request->amount ){
-            $transactiondetail = new Transactiondetail; 
+        if($request->transaction){          
             $transactiondetail->transaction = $request->transaction;
             $transactiondetail->reminder = $request->date;
             $transactiondetail->time = $request->time;
+            $transactiondetail->leadid = $id;
+         
+        }
+        if($request->amount) {
             $transactiondetail->amount = $request->amount;
             $transactiondetail->currency = $request->currency;
-            $transactiondetail->leadid = $id;
-            
-          $res = $transactiondetail->save();
         }
 
+        $res = $transactiondetail->save();
             
 
           if(isset($res) || $result) {

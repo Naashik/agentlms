@@ -85,7 +85,7 @@
 
         <div class="fv-row mb-8 d-flex align-items-center">
            
-            <input required type="text" style="width: 10rem" placeholder="Amount" name="amount" autocomplete="off" class="form-control bg-transparent"
+            <input type="text" style="width: 10rem" placeholder="Amount" name="amount" autocomplete="off" class="form-control bg-transparent"
                 value={{old('amount')}}>
             <span class="text-danger">@error('amount') {{$message}} @enderror</span>
 
