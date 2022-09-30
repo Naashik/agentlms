@@ -178,6 +178,7 @@ class AgentController extends Controller
         if($request->amount) {
             $transactiondetail->amount = $request->amount;
             $transactiondetail->currency = $request->currency;
+            $transactiondetail->leadid = $id;
         }
 
         $res = $transactiondetail->save();
