@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\OtpMail;
-use App\Models\User;
-use App\Models\Status;
+use Carbon\Carbon;
 use App\Models\Lead;
+use App\Models\User;
+use App\Mail\OtpMail;
+use App\Models\Status;
 use App\Models\Leaddetail;
+use App\Models\Statusvalue;
+use Illuminate\Http\Request;
 use App\Models\Countrydetail;
 use App\Models\Transactiondetail;
-use App\Models\Statusvalue;
-use Hash;
-use Session;
-use DB;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class AgentController extends Controller
 {
@@ -172,6 +172,7 @@ class AgentController extends Controller
             $transactiondetail->reminder = $request->date;
             $transactiondetail->time = $request->time;
             $transactiondetail->amount = $request->amount;
+            $transactiondetail->currency = $request->currency;
             $transactiondetail->leadid = $id;
             
           $res = $transactiondetail->save();

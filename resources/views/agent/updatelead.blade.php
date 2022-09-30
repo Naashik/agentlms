@@ -84,13 +84,26 @@
         </div>
 
         <div class="fv-row mb-8 d-flex align-items-center">
-            <!--begin::User-->
-            <input type="text" placeholder="Amount" name="amount" autocomplete="off" class="form-control bg-transparent"
+           
+            <input required type="text" style="width: 10rem" placeholder="Amount" name="amount" autocomplete="off" class="form-control bg-transparent"
                 value={{old('amount')}}>
             <span class="text-danger">@error('amount') {{$message}} @enderror</span>
-          
 
-            <!--end::User-->
+            <div class="form-group">
+                <label class="bg-transparent">
+                    <div class="fw-bold" style="width: 6rem">
+                        <select name="currency" class="form-control ms-2" style="-webkit-appearance: button;">            
+                            <option value='LKR' selected>LKR</option>
+                            <option value='USD'>USD</option>
+                            <option value='EUR'>EUR</option>
+                            <option value='GBP'>GBP</option>
+                            <option value='JPY'>JPY</option>
+                            <option value='CAD'>CAD</option>
+                            <option value='AUD'>AUD</option>
+                        </select>
+                    </div>
+                </label>
+            </div>     
         </div>
 
 
@@ -108,22 +121,17 @@
 
         <div class="d-flex fv-row mb-8">
             <label class="me-6 form-control bg-transparent" for="">Reminder Date</label>
-            <input class="form-control bg-transparent" type="date" data-date-format="DD MMMM YYYY" name="date">
+            <input class="form-control bg-transparent" type="date" name="date">
         </div>
 
         <div class="d-flex fv-row mb-8">
             <label class="me-6 form-control bg-transparent" for="">Reminder Time</label>
             <input class="form-control bg-transparent" type="time" name="time">
         </div>
-        <!--begin::Link-->
-
-        <!--end::Link-->
-        <!--end::Wrapper-->
         <!--begin::Submit button-->
         <button type="submit" class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i>
             Update</button>
         <!--end::Submit button-->
-        <!--begin::Sign up-->
     </form>
 
 
