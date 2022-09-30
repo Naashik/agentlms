@@ -95,6 +95,7 @@
                         <select name="currency" class="form-control ms-2" style="-webkit-appearance: button;">            
                             <option value='LKR' selected>LKR</option>
                             <option value='USD'>USD</option>
+                            <option value='INR'>INR</option>
                             <option value='EUR'>EUR</option>
                             <option value='GBP'>GBP</option>
                             <option value='JPY'>JPY</option>
