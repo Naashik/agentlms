@@ -2,6 +2,8 @@
 @section('content')
 @section('title_select','Lead Update')
 
+
+
 <div id="kt_app_content" class="app-content flex-column-fluid col-6 col-sm-6  col-md-3 col-lg-3 col-xl-3 col-xxl-3">
  <!--   <button onclick="history.back()" class="btnback mx-5 mt-5"><i class="fa-solid fa-angles-left"
             style="color:white;margin-top:0.2rem"></i></button> -->
@@ -122,7 +124,7 @@
 
         <div class="d-flex fv-row mb-8">
             <label class="me-6 form-control bg-transparent" for="">Reminder Date</label>
-            <input class="form-control bg-transparent" type="date" name="date">
+            <input class="form-control bg-transparent" placeholder="DD/MM/YYYY" type="date" id="datepicker" name="date">
         </div>
 
         <div class="d-flex fv-row mb-8">
@@ -138,5 +140,16 @@
 
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+
+    const config = {
+    dateFormat: "d-m-Y",
+}
+    flatpickr("input[type=date]", config);
+</script>
+
 @endsection
 <!--end::Content-->

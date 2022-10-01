@@ -125,7 +125,7 @@
                     <td>NULL</td>
                     @endif
                     @if ($transaction->reminder)
-                    <td>{{$transaction->reminder}}</td>
+                    <td>{{date('d-m-Y', strtotime($transaction->reminder))}}</td>
                     @else
                     <td>NULL</td>
                     @endif
@@ -152,7 +152,6 @@
         </table>
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        </script>
         <script type="text/javascript">
         $('.show_confirm').click(function(event) {
 

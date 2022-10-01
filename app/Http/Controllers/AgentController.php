@@ -75,8 +75,9 @@ class AgentController extends Controller
     }
 
     public function fetchtransaction(Request $request) {
-        $from = $request->from;
-        $to = $request->to;
+    
+        $from = date('Y-m-d', strtotime($request->from));
+        $to = date('Y-m-d', strtotime($request->to));
 
         $agentid = Session::get('loginId'); 
         
@@ -119,6 +120,9 @@ class AgentController extends Controller
             'agent' => $agent,
             'leads' => $leads,
         ]);
+      
+        
+        
     }
 
     public function leadview($id) {
