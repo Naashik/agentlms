@@ -101,7 +101,8 @@ class AgentController extends Controller
         }
 
             
-            foreach($leads as $lead) {
+            foreach($data as $lead) {
+                $lead->transaction = "No Transaction Data";
                 $transactiondata = Transactiondetail::where('leadid','=', $lead->id)
                 ->where('transaction', '!=', null)
                 ->orderBy('created_at', 'desc')
@@ -116,6 +117,9 @@ class AgentController extends Controller
                 foreach($transaction as $tdata) {
                     if ($tdata->leadid == $lead->leadid) {
                        $lead->transaction = $tdata->transaction;
+                    }
+                    else {
+                        $lead->transaction = NULL;
                     }
                 }
             }
@@ -304,6 +308,36 @@ class AgentController extends Controller
         $statusvalues = DB::table('statusvalues')->get();
         $statuses = DB::table('statuses')->get();
         $agent = User::where('id','=', $agentid)->first(); 
+
+        // $transaction = array();
+
+        // $data = DB::table('leads')
+        // ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+        // ->where('leads.agentid', '=', $agentid)
+        // ->get();
+
+
+        // foreach($data as $lead) {
+        //     $lead->transaction = NULL;
+        //     $transactiondata = Transactiondetail::where('leadid','=', $lead->id)
+        //     ->where('transaction', '!=', null)
+        //     ->orderBy('created_at', 'desc')
+        //     ->first();
+        //     if($transactiondata != null){
+        //         array_push($transaction, $transactiondata);
+        //     }        
+            
+        // }
+
+        // foreach($data as $lead) {
+        //     foreach($transaction as $tdata) {
+        //         if ($tdata->leadid == $lead->leadid) {
+        //            $lead->transaction = $tdata->transaction;
+        //         }
+        //     }
+        // }
+
+        // print($data);
     
         return view('agent.viewleads', [
             'statusvalues' => $statusvalues,
