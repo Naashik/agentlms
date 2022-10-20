@@ -28,148 +28,74 @@
         </div>
     </label>
 
-    <table class="table ms-5 mt-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 table-responsive">
+                <table class="table table-bordered user_datatable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone number</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Progress Status</th>
+                            <th>Retention Status</th>
+                            <th>Recent Transaction</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-        <thead>
-            <tr>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript">
 
-                <th id="th" scope="col">Name</th>
-                <th id="th" scope="col">Phone number</th>
-                <th id="th" scope="col">Email</th>
-                <th id="th" scope="col" style="width:7rem;">Status</th>
-                <th id="th" scope="col" style="width:7rem;">Progress Status</th>
-                <th id="th" scope="col" style="width:7rem;">Retention Status</th>
-                <th id="th" scope="col">Recent Transaction</th>
-                <th id="th" scope="col" style="width:25rem; text-align: center">Actions</th>
+$(document).ready(function(e) {
 
-            </tr>
-        </thead>
+    fetchtransaction();
 
-        <tbody>
-
-        </tbody>
-
-    </table>
-
-
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script>
-    $(document).ready(function() {
-        var status = document.getElementById("status").value;
-        $("table tbody").html('');
-        $.ajax({
-            url: "{{url('api/fetch-leads')}}",
-            type: "POST",
-            data: {
-                status: status,
-                _token: '{{csrf_token()}}'
-            },
-            dataType: 'json',
-            success: function(result) {
-                result[0].leads.forEach((res) => {
-                    res.transaction = 'No Transaction Data'
-                    result[1].forEach((trans) => {
-                        if (trans.leadid === res.leadid) {
-                            res.transaction = trans.transaction
-                        }
-                    })
-                })
-                $.each(result[0].leads, function(key, value) {
-                    var val;
-                    if (value.status == "Assigned") {
-                        val += `<td><img src="../media/logos/button-right.png"
-                                                    style="width: 15px; margin-right: 2px" alt="" />${value.status}
-                                            </td>`
-                    } else if (value.status == "Unassigned") {
-                        val += `<td><img src="../media/logos/button-wrong.png"
-                                                    style="width: 15px; margin-right: 2px" alt="" />${value.status}
-                                            </td>`
-                    } else {
-                        val += `<td>${value.status} </td>`
-                    }
-                    var tr = '<tr> <td>' + value
-                        .name + ' </td> <td> <a href="tel: ' + value.phonenumber + '">' +
-                        value.phonenumber +
-                        ' </a> </td> <td> <a href="mailto:' + value.email + '"> ' + value
-                        .email +
-                        ' <a/> </td> ' + val +
-                        ' <td>' + value.progressstatus + ' </td> <td> ' + value
-                        .retentionstatus + ' </td> <td>' + value
-                        .transaction +
-                        ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a target="_blank" style="margin-right:1rem;margin-left:1rem" href="/leadview/' +
-                        value.leadid +
-                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a> <a target="_blank"   href="/updatelead/' +
-                        value.leadid +
-                        '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>   </td>  </tr>';
-                    $("table tbody").append(tr);
-                });
-            }
-        });
-    })
-    </script>
-
-    <script>
-    $(document).ready(function() {
-        $('#status').on('change', function() {
-            var status = this.value;
-            $("table tbody").html('');
-            $.ajax({
-                url: "{{url('api/fetch-leads')}}",
-                type: "POST",
-                data: {
-                    status: status,
-                    _token: '{{csrf_token()}}'
+        function fetchtransaction(status = '') {
+            var table = $('.user_datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url:'{{ route("lead.details") }}',
+                data:{status:status}
                 },
-                dataType: 'json',
-                success: function(result) {
-                    result[0].leads.forEach((res) => {
-                        res.transaction = 'No Transaction Data'
-                        result[1].forEach((trans) => {
-                            if (trans.leadid === res.leadid) {
-                                res.transaction = trans.transaction
-                            }
-                        })
-                    })
-                    $.each(result[0].leads, function(key, value) {
-                        var val;
-                        if (value.status == "Assigned") {
-                            val += `<td><img src="../media/logos/button-right.png"
-                                                    style="width: 15px; margin-right: 2px" alt="" />${value.status}
-                                            </td>`
-                        } else if (value.status == "Unassigned") {
-                            val += `<td><img src="../media/logos/button-wrong.png"
-                                                    style="width: 15px; margin-right: 2px" alt="" />${value.status}
-                                            </td>`
-                        } else {
-                            val += `<td>${value.status} </td>`
-                        }
-                        var tr = '<tr> <td>' + value
-                            .name + ' </td> <td> <a href="tel: ' + value
-                            .phonenumber + '">' +
-                            value.phonenumber +
-                            ' </a> </td> <td> <a href="mailto:' + value
-                            .email +
-                            '">' +
-                            value.email + ' <a/> </td> ' + val +
-                            ' <td>' + value.progressstatus + ' </td>  <td> ' + value
-                            .retentionstatus + ' </td> <td>' +
-                            value
-                            .transaction +
-                            ' </td> <td class="d-flex justify-content-center"> <button class="btnfile"> <i class="fa-solid fa-phone" style="color:white"></i> Call</button> <a target="_blank" style="margin-right:1rem;margin-left:1rem" href="/leadview/' +
-                            value.leadid +
-                            '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white;"></i> View</button></a> <a target="_blank"  href="/updatelead/' +
-                            value.leadid +
-                            '"><button class="btnfile"><i class="fa-sharp fa-solid fa-file-import" style="color:white"></i> Update</button></a>   </td>  </tr>';
-                        $("table tbody").append(tr);
-                    });
+            columns: [
+            {data: 'name', name: 'name'},
+            {data: 'phonenumber', name: 'phonenumber'},
+            {data: 'email', name: 'email'},
+            {data: 'status', name: 'status'},
+            {data: 'progressstatus', name: 'progressstatus'},
+            {data: 'retentionstatus', name: 'retentionstatus'},
+            {data: 'transaction', name: 'transaction'},
+            {
+                data: function(row) {
+                    return  '<div style="display:flex; flex-wrap: no-wrap; align-items:center"> <a href="/leadview/' + row.leadid + '" class="edit btn btn-success btn-sm">View</a> <a href="/updatelead/' + row.leadid + '" class="edit btn btn-secondary btn-sm mx-4">Update</a></div>'
                 }
-            });
-        });
+            }
+        ]
     });
-    </script>
+    }
 
-    @endsection
+    $('#status').on('change', function() {
+        var status = $('#status').val();
+        if(status != '') {
+            $('.user_datatable').DataTable().destroy();
+            fetchtransaction(status);
+        }
+            
+    });
+           
+});
+</script>
+
+@endsection

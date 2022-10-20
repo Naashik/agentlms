@@ -44,107 +44,76 @@
     flatpickr("input[type=date]", config);
 </script>
 
-<script>
+<div class="container">
+    <div class="row">
+        <div class="col-12 table-responsive">
+            <table class="table table-bordered user_datatable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Transaction Details</th>
+                        <th>Reminder Date</th>
+                        <th>Reminder Time</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript">
 
 $(document).ready(function(e) {
 
-    $('#search').on('click', function() {
-        var from = document.getElementById("from").value;
-        var to = document.getElementById("to").value;   
- 
-        if(from && to) {
-            $("table tbody").html('');
-            $.ajax({
-            url: "{{url('api/fetch-transaction')}}",
-            type: "POST",
-            data: {
-                from: from,
-                to: to,
-                _token: '{{csrf_token()}}'
-            },
-            dataType: 'json',
-            success: function(result) {
+    fetchtransaction();
 
-                $.each(result.leads, function(key, value) {
-
-
-                    function padTo2Digits(num) {
-                        return num.toString().padStart(2, '0');
-                    }
-
-                    function formatDate(date) {
-                        return [
-                            padTo2Digits(date.getDate()),
-                            padTo2Digits(date.getMonth() + 1),
-                            date.getFullYear(),
-                        ].join('/');
-                    }
-
-                    var mySQLDate = value.reminder;
-                    let date = new Date(Date.parse(mySQLDate.replace(/[-]/g,'/')));
-
-                    let reminder = formatDate(date);
-
-
-                    var tr = '<tr> <td>' + value
-                        .name + ' </td> <td>' + value.transaction + 
-                        ' </td> <td>' + reminder +
-                        ' </td> <td>' + value.time +
-                        '</td>  <td>' + value.created_at +
-                        '</td> <td style="text-align:center ;" class="w-25"> <form target="_blank" id="form2" method="get" action="/leadview/' +
-                        value.leadid +
-                        '"></form> <button type="submit" form="form2" class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white"></i> View</button> </td>  </tr>'
-
-                    $("table tbody").append(tr);
-                });
-
+        function fetchtransaction(from = '', to = '') {
+            var table = $('.user_datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url:'{{ route("transaction.details") }}',
+                data:{from:from, to:to}
+                },
+            columns: [
+            {data: 'name', name: 'name'},
+            {data: 'transaction', name: 'transaction'},
+            {data: 'reminder', name: 'reminder'},
+            {data: 'time', name: 'time'},
+            {data: 'created_at', name: 'created_at'},
+            {
+                data: function(row) {
+                    return  '<div style="display:flex; flex-wrap: no-wrap; align-items:center"> <a href="/leadview/' + row.leadid + '" class="edit btn btn-success btn-sm">View</a></div>'
+                }
             }
-        });
-        }
-        
+
+        ]
     });
+    }
+
+    $('#search').click(function(){
+        var from_date = $('#from').val();
+        var to_date = $('#to').val();
+
+        if(from_date != '' &&  to_date != '')
+        {
+            $('.user_datatable').DataTable().destroy();
+            fetchtransaction(from_date, to_date);
+        }
+        else
+        {
+            alert('Both Date is required');
+        }
+        });
+           
 });
 </script>
-<table class="table ms-5 mt-10 ">
-
-    <thead>
-        <tr>
-            <th id="th" scope="col">Name</th>
-            <th id="th" scope="col">Transaction details</th>
-            <th id="th" scope="col">Reminder date</th>
-            <th id="th" scope="col">Reminder time</th>
-            <th id="th" scope="col">Created at</th>
-            <th id="th" scope="col"></th>
-
-
-        </tr>
-    </thead>
-    @if(count($leads) > 0)
-    <tbody>
-        @foreach($leads as $lead)
-        <tr>
-            <td>{{$lead->name}}</td>
-            <td>{{$lead->transaction}}</td>
-            @if ($lead->reminder)
-            <td>{{date('d-m-Y', strtotime($lead->reminder))}}</td>
-            @else
-            <td>NULL</td>
-            @endif
-            @if ($lead->time)
-            <td>{{$lead->time}}</td>
-            @else
-            <td>NULL</td>
-            @endif
-            <td>{{$lead->created_at}}</td>
-            <td style="text-align:center ;">
-                <a target="_blank" style="margin-right:3rem;margin-left:3rem" href="/leadview/{{$lead->leadid}}' +
-                        value.leadid +
-                        '"><button class="btnfile"><i class="fa-solid fa-file-circle-check" style="color:white"></i>
-                        View</button></a>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-    @endif
-</table>
 @endsection

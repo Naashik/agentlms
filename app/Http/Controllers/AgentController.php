@@ -33,56 +33,133 @@ class AgentController extends Controller
         return view('agentlogin');
     }
 
-    public function fetchleads(Request $request)
+    public function fetchdetails(Request $request)
     {
+
+
+
+        // $transaction = array();
+
+        // foreach($leads as $lead) {
+        //     $transactiondata = Transactiondetail::where('leadid','=', $lead->id)
+        //     ->where('transaction', '!=', null)
+        //     ->orderBy('created_at', 'desc')
+        //     ->first();
+        //     if($transactiondata != null){
+        //         array_push($transaction, $transactiondata);
+        //     }        
+            
+        // }
+        
+        // if($request->status == "All") {
+        //     $data['leads'] = DB::table('leads')
+        //     ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+        //     ->where('leads.agentid', '=', $agentid)
+        //     ->get();
+        // }
+
+        // else {
+        //     $data['leads'] = DB::table('leads')
+        //     ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+        //     ->where('leads.agentid', '=', $agentid)
+        //     ->where('statuses.progressstatus', '=', $request->status)
+        //     ->get();
+        // }
+
+       
+        // $returnArr = [$data, $transaction];    
+        // return response()->json($returnArr);
 
         $agentid = Session::get('loginId');  
         $leads = Lead::where('agentid','=', $agentid)->get();
-
         $transaction = array();
 
-        foreach($leads as $lead) {
-            $transactiondata = Transactiondetail::where('leadid','=', $lead->id)
-            ->where('transaction', '!=', null)
-            ->orderBy('created_at', 'desc')
-            ->first();
-            if($transactiondata != null){
-                array_push($transaction, $transactiondata);
-            }        
+        if(request()->ajax())
+        {
+           if(!empty($request->status)) {
+                if($request->status == "All") {
+                    $data = DB::table('leads')
+                    ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+                    ->where('leads.agentid', '=', $agentid)
+                    ->get();
+                }
             
-        }
-        
-        if($request->status == "All") {
-            $data['leads'] = DB::table('leads')
-            ->join('statuses', 'leads.id', '=', 'statuses.leadid')
-            ->where('leads.agentid', '=', $agentid)
-            ->get();
+                else {
+                    $data = DB::table('leads')
+                    ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+                    ->where('leads.agentid', '=', $agentid)
+                    ->where('statuses.progressstatus', '=', $request->status)
+                    ->get();
+                }
+            }
+            else {
+                $data = DB::table('leads')
+                ->join('statuses', 'leads.id', '=', 'statuses.leadid')
+                ->where('leads.agentid', '=', $agentid)
+                ->get();
+    
         }
 
-        else {
-            $data['leads'] = DB::table('leads')
-            ->join('statuses', 'leads.id', '=', 'statuses.leadid')
-            ->where('leads.agentid', '=', $agentid)
-            ->where('statuses.progressstatus', '=', $request->status)
-            ->get();
-        }
+            
+            foreach($leads as $lead) {
+                $transactiondata = Transactiondetail::where('leadid','=', $lead->id)
+                ->where('transaction', '!=', null)
+                ->orderBy('created_at', 'desc')
+                ->first();
+                if($transactiondata != null){
+                    array_push($transaction, $transactiondata);
+                }        
+                
+            }
 
-       
-        $returnArr = [$data, $transaction];    
-        return response()->json($returnArr);
+            foreach($data as $lead) {
+                foreach($transaction as $tdata) {
+                    if ($tdata->leadid == $lead->leadid) {
+                       $lead->transaction = $tdata->transaction;
+                    }
+                }
+            }
+            
+            return datatables()->of($data)->make(true);
+        }
         
 
     }
 
     public function fetchtransaction(Request $request) {
     
-        $from = date('Y-m-d', strtotime($request->from));
-        $to = date('Y-m-d', strtotime($request->to));
+       
+        
+        // if($from && $to){
+        //     $data['leads'] = DB::table('leads')
+        //     ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        //     ->where('leads.agentid', '=', $agentid)
+        //     ->where('reminder', '!=', NULL)
+        //     ->orderBy('reminder', 'asc')
+        //     ->orderBy('time', 'asc')
+        //     ->whereBetween('reminder', [$from, $to])     
+        //     ->get();
+        // }
+        // else {
+        //     $data['leads'] = DB::table('leads')
+        //     ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
+        //     ->where('leads.agentid', '=', $agentid)
+        //     ->where('reminder', '!=', NULL)
+        //     ->orderBy('reminder', 'asc')
+        //     ->orderBy('time', 'asc')
+        //     ->get(); 
+        // }
+        // return response()->json($data);
 
         $agentid = Session::get('loginId'); 
-        
-        if($from && $to){
-            $data['leads'] = DB::table('leads')
+
+        if(request()->ajax())
+        {
+           if(!empty($request->from)) {
+            $from = date('Y-m-d', strtotime($request->from));
+            $to = date('Y-m-d', strtotime($request->to));
+            
+            $data = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
             ->where('leads.agentid', '=', $agentid)
             ->where('reminder', '!=', NULL)
@@ -90,17 +167,25 @@ class AgentController extends Controller
             ->orderBy('time', 'asc')
             ->whereBetween('reminder', [$from, $to])     
             ->get();
-        }
-        else {
-            $data['leads'] = DB::table('leads')
+            }
+            
+            else {
+                
+            $data = DB::table('leads')
             ->join('transactiondetails', 'leads.id', '=', 'transactiondetails.leadid')
             ->where('leads.agentid', '=', $agentid)
             ->where('reminder', '!=', NULL)
             ->orderBy('reminder', 'asc')
             ->orderBy('time', 'asc')
             ->get(); 
+    
         }
-        return response()->json($data);
+            foreach($data as $transaction) {
+                $transaction->reminder = date('d-m-Y', strtotime($transaction->reminder)); 
+            }
+            
+            return datatables()->of($data)->make(true);
+        }
 
     }
 
