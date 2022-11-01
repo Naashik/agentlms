@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\City;
 use App\Models\Lead;
 use App\Models\User;
 use App\Mail\OtpMail;
+use App\Models\State;
 use App\Models\Status;
+use App\Models\Country;
 use App\Models\Leaddetail;
 use App\Models\Statusvalue;
 use Illuminate\Http\Request;
@@ -251,6 +254,111 @@ class AgentController extends Controller
         else {
             return back()->with('fail','Something went wrong. Please try again');
         }
+     }
+
+     public function editlead($id){
+
+        $agentid = Session::get('loginId');
+        $agent = User::where('id','=', $agentid)->first();
+
+        $country = null;
+        $state = null;
+        $city = null;
+        $countries = Country::get(["name", "id", "phonecode"]);
+
+        $userId = Session::get('loginId');
+        $admin = User::where('id','=', $userId)->first();
+        $countrydetail = Countrydetail::where('leadid','=', $id)->first();
+        $lead = Lead::where('id','=', $id)->first();
+        $leaddata = Leaddetail::where('leadid','=', $id)->first();
+        if($countrydetail) {
+            $country = Country::where('name','=', $countrydetail->countryname)->first();
+            $state = State::where('name','=', $countrydetail->state)->first();
+            $city = City::where('name','=', $countrydetail->city)->first();
+        }   
+ 
+            return view('agent.editlead', ['lead' => $lead,'agent' => $agent, 'countries' => $countries, 'countrydetail' => $countrydetail, 'leaddata' => $leaddata, 'country' => $country, 'state' => $state, 'city' => $city]);
+        
+     }
+
+     public function updateleaddata(Request $request,$id) {
+        //update basic details of the lead
+
+        $res = DB::table('leads')
+        ->where('id', $id)
+        ->update(['name' => $request->name, 'phonenumber' => $request->phonenumber, 'email' => $request->email, 'accountnumber' => $request->accountnumber]);
+
+        // update country details of the lead
+        
+        $country = Country::where('id','=', $request->countryid)->first();
+        $state = State::where('id','=', $request->stateid)->first();
+        $city = City::where('id','=', $request->cityid)->first();
+
+        if($country && $state) {
+            $val = Countrydetail::where('leadid', $id)->first();
+
+             if($val) {
+            
+             $result = DB::table('countrydetails')
+            ->where('leadid', $id)
+            ->update(['countryname' => $country->name , 'state' => $state->name, 'city' => optional($city)->name, 'countrycode' => $country->phonecode]);
+        }
+ 
+        else {
+            $result = DB::table('countrydetails')->insert(['countryname' => $country->name , 'state' => $state->name, 'city' => optional($city)->name, 'countrycode' => $country->phonecode, 'leadid' => $id]);
+        }
+        }
+
+        //update lead position, leadtype and phonenumber2
+
+        $position = $request->position;
+        $phonenumber2 = $request->phonenumber2;
+        $leadtype = $request->leadtype;
+
+       if($position || $phonenumber2 ||  $leadtype ) {
+        $lead = Leaddetail::where('leadid', $id)->first();
+
+        if($lead) {
+            
+            $success = DB::table('leaddetails')
+           ->where('leadid', $id)
+           ->update(['position' => $request->position , 'phonenumber2' => $request->phonenumber2, 'leadtype' => $request->leadtype]);
+       }
+
+       else {
+           $success = DB::table('leaddetails')->insert(['position' => $request->position , 'phonenumber2' => $request->phonenumber2, 'leadtype' => $request->leadtype,'leadid' => $id]);
+       }
+       }
+            
+        if($res || isset($result) || isset($success) ) {
+            return redirect('viewleads')->with('success','Lead updated successfully');
+        }
+        else {
+            return redirect('viewleads')->with('fail','Something went wrong. Please try again');
+        }
+     }
+
+     public function deletelead($id){
+
+        $lead = Lead::findOrFail($id);
+        $res = $lead->delete();
+  
+        if($res) {
+            return redirect('/admindashboard/viewleads')->with('success','Lead deleted successfully');
+        }
+        else {
+            return redirect('/admindashboard/viewleads')->with('fail','Something went wrong. Please try again');
+        }
+     }
+     public function fetchState(Request $request)
+     {
+         $data['states'] = State::where("country_id",$request->country_id)->get(["name", "id"]);
+         return response()->json($data);
+     }
+     public function fetchCity(Request $request)
+     {
+         $data['cities'] = City::where("state_id",$request->state_id)->get(["name", "id"]);
+         return response()->json($data);
      }
 
     public function updatedetails(Request $request, $id) {

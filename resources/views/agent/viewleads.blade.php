@@ -79,7 +79,7 @@ $(document).ready(function(e) {
             {data: 'transaction', name: 'transaction'},
             {
                 data: function(row) {
-                    return  '<div style="display:flex; flex-wrap: no-wrap; align-items:center"> <a href="callto:'+ row.phonenumber +'" class="edit btn btn-secondary btn-sm">Call</a>  <a href="/leadview/' + row.leadid + '" class="edit btn btn-success mx-4 btn-sm">View</a> <a href="/updatelead/' + row.leadid + '" class="edit btn btn-secondary btn-sm">Update</a></div>'
+                    return  '<div style="display:flex; flex-wrap: no-wrap; align-items:center"> <a href="callto:'+ row.phonenumber +'" class="edit btn btn-secondary btn-sm">Call</a>  <a href="/leadview/' + row.leadid + '" class="edit btn btn-success mx-4 btn-sm">View</a> <a href="/updatelead/' + row.leadid + '" class="edit btn btn-secondary btn-sm">Update</a> <a href="/editlead/' + row.leadid + '" class="edit btn btn-secondary btn-sm">Edit</a></div>'
                 }
             }
         ]

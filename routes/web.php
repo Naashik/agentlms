@@ -34,7 +34,11 @@ Route::get('/leadtransactionview',[AgentController::class,'leadtransactionview']
 
 Route::get('/updatelead/{id}',[AgentController::class,'updatelead'])->name('updatelead')->middleware('isLoggedIn');
 
+Route::get('/editlead/{id}',[AgentController::class,'editlead'])->name('editlead')->middleware('isLoggedIn');
+
 Route::post('/updatedetails/{id}',[AgentController::class,'updatedetails'])->name('updatedetails');
+
+Route::post('/updatelead/{id}',[AgentController::class,'updateleaddata'])->name('updateleaddata');
 
 Route::post('recaptcha',[AgentController::class,'recaptcha'])->name('recaptcha');
 
@@ -47,3 +51,6 @@ Route::post('logout',[AgentController::class,'logout'])->name('logout');
 Route::get('api/fetch-transaction', [AgentController::class, 'fetchtransaction'])->name('transaction.details');
 
 Route::get('api/fetch-leads', [AgentController::class, 'fetchdetails'])->name('lead.details');
+
+Route::post('api/fetch-states', [AgentController::class, 'fetchState']);
+Route::post('api/fetch-cities', [AgentController::class, 'fetchCity']);
