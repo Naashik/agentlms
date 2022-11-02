@@ -17,8 +17,7 @@
                 @csrf
 
 
-
-                <div class="mb-10">
+                <div class="mt-10 mb-5 ">
 
                     <h2 style="font-size:20px">LEAD UPDATE </h2>
 
