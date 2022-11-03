@@ -91,7 +91,7 @@ $(document).ready(function(e) {
             {data: 'created_at', name: 'created_at'},
             {
                 data: function(row) {
-                    return  '<div style="display:flex; flex-wrap: no-wrap; align-items:center"> <a href="/leadview/' + row.leadid + '" class="edit btn btn-success btn-sm">View</a></div>'
+                    return  '<div style="display:flex; flex-wrap: no-wrap; align-items:center"> <a href="/leadview/' + row.leadid + '" class="edit btn btn-success btn-sm">View</a> <a href="callto:'+ row.phonenumber +'" class="edit btn btn-secondary mx-4 btn-sm">Call</a></div>'
                 }
             }
 
