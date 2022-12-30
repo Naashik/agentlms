@@ -101,7 +101,7 @@ class AgentController extends Controller
                 ->where('leads.agentid', '=', $agentid)
                 ->get();
     
-        }
+                }
 
             
             foreach($data as $lead) {
