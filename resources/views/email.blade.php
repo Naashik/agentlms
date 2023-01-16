@@ -62,11 +62,11 @@ License: For each use you must have a valid license purchased only from above li
     <!--end::Theme mode setup on page load-->
     <!--begin::Root-->
     <div class="d-flex flex-column flex-root" id="kt_app_root"
-        style="background-image: url(../media/misc/lmp-backgroundnew.jpg);background-size: cover;">
+        style="background-image: url(../media/misc/pragicts-lms-background.png);background-size: cover;">
         <!--begin::Authentication - Sign-in -->
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <!--begin::Body-->
-            <div class="d-flex flex-column  order-2 order-lg-1" style="background-color:white;opacity:0.85">
+            <div class="d-flex flex-column  order-2 order-lg-1" style="background-color:black;opacity:0.85">
                 <!--begin::Form-->
                 <div class="m-1">
                 <img alt="Logo" src="../media/logos/MRFXLogoFinal.png" class="h-25px w-75px " />
@@ -89,10 +89,10 @@ License: For each use you must have a valid license purchased only from above li
                             </center>
                             <div class="text-center mb-10">
                                 <!--begin::Title-->
-                                <h1 class="text-dark fw-bolder mb-3" style="font-size:40px">EDGE</h1>
+                                <h1 class="text-dark fw-bolder mb-3 theme-white" style="font-size:40px">EDGE</h1>
                                 <h2 style="font-size:20px">Verification</h2>
 
-                                <div id="ct"></div>
+                                <div id="ct" class="theme-white"></div>
                                 <script type="text/javascript">
                                 function display_c() {
                                     var refresh = 1000; // Refresh rate in milli seconds
@@ -111,7 +111,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
                                 <input type="number" placeholder="Enter your verification code" name="number"
-                                    autocomplete="off" class="form-control bg-transparent" />
+                                    autocomplete="off" class="form-control bg-transparent theme-white" />
                                 <span class="text-danger">@error('number') {{$error}} @enderror</span>
                             </div>
 

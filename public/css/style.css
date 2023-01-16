@@ -78,7 +78,7 @@ table th {
 }
 
 .box select {
-    background-color: #f0f0f0be !important;
+
     color: rgb(0, 0, 0) !important;
     padding: 8px !important;
     margin: 5px;
@@ -102,7 +102,7 @@ table th {
 }
 
 .btnfile {
-    background-color: DodgerBlue ;
+    background-color: #f7921a ;
     border: none !important;
     color: white !important;
     padding: 8px 14px !important;

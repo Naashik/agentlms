@@ -81,7 +81,7 @@
 
 
 
-        <div class="fv-row mb-8 fs-6">
+        <div class="fv-row mb-8 fs-6 theme-white">
             <label for="">Name: <b>{{$lead->name}}</b></label>
         </div>
 

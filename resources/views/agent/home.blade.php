@@ -41,7 +41,7 @@
                         <!--begin::Card widget 20-->
                         <a href="/viewleads">
                             <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-100 mb-5 mb-xl-10"
-                                style="background-color: #1E1E2D;background-image:url('assets/media/patterns/vector-1.png')">
+                                style="background-color: rgb(22, 22, 22);background-image:url('assets/media/patterns/vector-1.png')">
                                 <!--begin::Header-->
 
                                 <div class=" pt-5 justify-content-center">
@@ -84,7 +84,7 @@
                         <!--begin::Card widget 20-->
                         <a href="/leadtransactionview">
                             <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-100 mb-5 mb-xl-10"
-                                style="background-color: #1E1E2D;background-image:url('assets/media/patterns/vector-1.png')">
+                                style="background-color: rgb(22, 22, 22);background-image:url('assets/media/patterns/vector-1.png')">
                                 <!--begin::Header-->
 
                                 <div class=" pt-5 justify-content-center">
