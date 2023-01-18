@@ -62,11 +62,11 @@ License: For each use you must have a valid license purchased only from above li
     <!--end::Theme mode setup on page load-->
     <!--begin::Root-->
     <div class="d-flex flex-column flex-root" id="kt_app_root"
-        style="background-image: url(../media/misc/lmp-backgroundnew.jpg);background-size: cover;">
+        style="background-image: url(../media/misc/pragicts-lms-background.png;background-size: cover;">
         <!--begin::Authentication - Sign-in -->
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <!--begin::Body-->
-            <div class="d-flex flex-column  order-2 order-lg-1" style="background-color:white;opacity:0.85">
+            <div class="d-flex flex-column  order-2 order-lg-1" style="background-color:black;opacity:0.85">
                 <!--begin::Form-->
                 <div class="m-1">
                 <img alt="Logo" src="../media/logos/MRFXLogoFinal.png" class="h-25px w-75px " />
@@ -85,7 +85,7 @@ License: For each use you must have a valid license purchased only from above li
                             </center>
                             <div class="text-center mb-6">
 
-                                <h1 class="text-dark fw-bolder mb-3" style="font-size:40px">EDGE</h1>
+                                <h1 class="text-dark fw-bolder mb-3 theme-white" style="font-size:40px">EDGE</h1>
 
                             </div>
                             <!--begin::Heading-->
