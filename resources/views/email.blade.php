@@ -140,9 +140,9 @@ License: For each use you must have a valid license purchased only from above li
                     style="color:gray;font-size:10px">
                     <div class="d-flex px-2">
                         <img alt="Logo" src="../media/logos/prag.png" class="h-15px" style="margin-right:0.2rem" />
-                        <p class="mb-0 fw-semibold" target="_blank">Engineered by PragICTS | </p>
+                        <p class="mb-0 fw-semibold" target="_blank" style="color:gray">Engineered by PragICTS | </p>
                     </div>
-                    <p class="mb-0 fw-semibold h-1px" target="_blank">https://pragicts.com | edge@pragicts.com</p>
+                    <p class="mb-0 fw-semibold h-1px" target="_blank" style="color:gray">https://pragicts.com | edge@pragicts.com</p>
                 </footer>
 
                 <!--end::Footer-->
