@@ -70,10 +70,10 @@ License: For each use you must have a valid license purchased only from above li
             <!--begin::Body-->
             <div class="d-flex flex-column  order-2 order-lg-1" style="background-color:black;opacity:0.85">
                 <!--begin::Form-->
-                <div class="m-1">
+              <!--  <div class="m-1">
                 <img alt="Logo" src="../media/logos/MRFXLogoFinal.png" class="h-25px w-75px " />
                 <p class="mb-0 fw-semibold h-1px" style="font-size:10px;color:gray">Licence to MRFX</p>
-                </div>
+                </div> -->
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                     <!--begin::Wrapper-->
                     <div class="w-lg-500px p-10">
@@ -86,12 +86,17 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="alert alert-danger">{{Session::get('fail')}}</div>
                             @endif
                             @csrf
-                            <center>
+                         <!--   <center>
                                 <img alt="Logo" src="../media/logos/edge.png" class="h-75px " />
+                            </center> -->
+                            <center>
+                                <img alt="Logo" src="../media/logos/MRFXLogoFinal.png" class="h-75px " />
                             </center>
+                       
                             <div class="text-center mb-10">
                                 <!--begin::Title-->
-                                <h1 class="text-dark fw-bolder mb-3 theme-white" style="font-size:40px">EDGE</h1>
+                                <h1 class="text-dark fw-bolder mb-3 theme-white" style="font-size:15px">Licence to MRFX</h1>
+                           <!--     <h1 class="text-dark fw-bolder mb-3 theme-white" style="font-size:40px">EDGE</h1> -->
                                 <h2 style="font-size:20px">Agent Login</h2>
                                 <div id="ct" class="theme-white"></div>
                                 <script type="text/javascript">

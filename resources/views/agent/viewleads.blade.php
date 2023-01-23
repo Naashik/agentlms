@@ -29,11 +29,11 @@
     </label>
 
     <div class="container">
-        <div class="row">
+        <div class="row" >
             <div class="col-12 table-responsive">
-                <table class="table table-bordered user_datatable">
-                    <thead>
-                        <tr>
+                <table class="table table-bordered user_datatable" >
+                    <thead >
+                        <tr >
                             <th>Name</th>
                             <th>Phone number</th>
                             <th>Email</th>
@@ -97,5 +97,6 @@ $(document).ready(function(e) {
            
 });
 </script>
+
 
 @endsection
